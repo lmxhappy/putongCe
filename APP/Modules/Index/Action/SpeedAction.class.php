@@ -8,7 +8,7 @@
 class SpeedAction extends Action {
 	public function index()
 	{
-		p('numbers');die;
+
 		$this->numbers = $this->createMatrix();
 		
 		$ret = $this->storeMatrix($this->numbers);

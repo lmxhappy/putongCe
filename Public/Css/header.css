@@ -1,0 +1,58 @@
+#login {
+position: absolute;
+right: 10px;
+top: 17px;
+color: #464542;
+}
+
+#logDiv {
+cursor: default;
+}
+
+#udlogs {
+position: absolute;
+top: 35px;
+right: 17px;
+}
+
+#header {
+position: relative;
+height: 66px;
+background: url("../images/1.png") -1px -43px;
+z-index: 15;
+}
+
+#logo {
+cursor: pointer;
+position: absolute;
+width: 175px;
+height: 75px;
+background: url("../images/logo.jpg") 0 -1px;
+background-repeat:no-repeat;
+margin: 10px 5px 0px 16px;
+}
+
+#mapmore {
+	font-size: 20px;
+	right: 200px;
+	position: absolute;
+	left: 400px;
+	top: 26px;
+	_width: 60%;
+	_min-width: 300px;
+	text-align: center;
+}
+
+#head_index {
+width: 410px;
+position: absolute;
+z-index: 10000;
+}
+
+#black {
+cursor:default;
+text-decoration: none;
+}
+a{
+	text-decoration: none;
+}

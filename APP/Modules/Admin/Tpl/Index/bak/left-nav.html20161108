@@ -1,0 +1,49 @@
+    <!--主体左侧导航-->
+    <div class="left_menu">
+        <div class="menuid_0">
+			<!--
+            <dl>
+                <dt>节点管理</dt>
+                    <dd>
+                        <a href="{:U('Node/add')}">添加节点</a>
+                        <a href="{:U('Node/del')}">编辑节点</a>
+                    </dd>
+            </dl>
+			-->
+			
+			<!--
+            <dl>
+                <dt>网站配置</dt>
+                    <dd>
+                        <a href="{|U:'Config/Config/edit_config'}">配置管理</a>
+                    </dd>
+            </dl>
+			-->
+            <dl>
+                <dt>用户管理</dt>
+                    <dd id="userList" class="active" >
+                        <span>                        <a href="{:U('Node/add')}">添加节点</a>
+用户列表</span>
+                    </dd>
+					 
+					<dd id="newuser" >
+                        <span>添加新用户</span>
+                    </dd>
+					
+            </dl>
+			
+			 <dl>
+                <dt>工具</dt>
+                 <dd id="new">
+                        <a  menuid="{$m.menuid}">生成测试页面</a>
+                       
+                 </dd>
+				 
+				  <dd id="testResult">
+                        <a  menuid="{$m.menuid}">测试结果</a>
+                       
+                 </dd>
+            </dl>
+        </div>
+    </div>
+    <!--主体左侧导航-->

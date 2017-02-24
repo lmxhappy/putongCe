@@ -1,0 +1,52 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/>
+    <title>删除栏目</title>
+    <script type="text/javascript" src="__PUBLIC__/js/jquery.min.js"></script>
+    <script type="text/javascript" src="__PUBLIC__/js/jquery-ui.min.js"></script>  
+    <link rel="stylesheet" href="__PUBLIC__/css/bootstrap.min.css">
+     <style>
+     table{
+    width: 600px !important;
+    }
+    </style>
+ <body>
+
+  <form action="{:u('editBasic')}" method='POST'>
+ <table  class="table table-bordered">
+  <tr>
+    <td>英文名称
+    </td>  
+   <td> 
+  <input type="text" name="name" id="name" class="text ui-widget-content ui-corner-all" value="{$nodes.name}" />
+     </td> 
+  </tr>
+  <tr>
+    <td>中文名称
+    </td>  
+      <td>  
+  <input type="text" name="cname" id="cname" class="text ui-widget-content ui-corner-all" value="{$nodes.cname}" />
+  </td>
+  </tr>
+  <tr>
+    <td>节点id
+    
+    </td>  
+  <td>
+  <input type="text" name="number" id="number" class="text ui-widget-content ui-corner-all" value="{$nodes.id}" />
+  </td>
+  </tr>
+  <tr>
+    <td>节点ip地址
+    </td>  
+   <td> 
+  <input type="text" name="addr" id="ipaddr"  class="text ui-widget-content ui-corner-all" value="{$nodes.addr}" />
+</td>
+</tr>
+</table>
+  <button id="store">提交</button>
+  </form>    
+</body>
+</html>

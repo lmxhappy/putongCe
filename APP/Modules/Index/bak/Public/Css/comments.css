@@ -1,0 +1,78 @@
+.cmts-list li {
+padding: 20px 0 19px 10px;
+overflow: hidden;
+border-bottom: 1px dashed #e0e0e0;
+}
+.cmts-title {
+overflow: hidden;
+padding: 0 10px 8px;
+border-bottom: 1px solid #e9e9e9;
+}
+.pt-pic {
+_display: inline;
+float: left;
+margin-right: 12px;
+}
+.cmts-list li .cmt-do {
+color: #d9d9d9;
+float: right;
+}
+.cmt-img {
+text-align: center;
+height:70px;
+width:48px;
+}
+.gfl {
+float: left;
+-display: inline;
+}
+
+.cmt-floor {
+color: #999;
+}
+.pt-txt span {
+color: #999;
+}
+.cmt-img {
+float: left;
+text-align: center;
+}
+
+.pt-txt {
+overflow: hidden;
+}
+
+.pt-txt span {
+color: #999;
+}
+.cmt-info {
+float: right;
+margin-left: 10px;
+color: #999;
+}
+
+.cmt-content {
+margin: 8px 0;
+line-height: 24px;
+overflow: hidden;
+color: #333;
+word-wrap: break-word;
+}
+/*
+.cmt-do{
+width:650px;
+}*/
+a {
+color: #0078b6;
+text-decoration: none;
+}
+li {
+list-style: none;
+}
+.agree, .disagree{
+padding-right: 10px;
+margin-right: 10px;
+border-right: 1px solid #D4D4D4;
+line-height: 16px;
+display: inline-block;
+}

@@ -1,0 +1,7 @@
+function addNum()
+{
+	alert(this);
+	var num = $('.cmt-do-num').val();
+	alert($('.cmt-do-num'));
+	alert(num);
+}

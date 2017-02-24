@@ -1,0 +1,32 @@
+<include file="Common:header" />
+		<link type="text/css" href="__ROOT__/Public/Css/index.css" rel="stylesheet">
+		<link type="text/css" href="__ROOT__/Public/Css/style.css" rel="stylesheet">
+<include file="Common:nav" />
+
+	<div id="cnt" style="overflow:hidden;">
+		<div class="wrap">
+			<div class="grow index-page">
+				<div class="main">
+					<div class="contents gclear" >
+						<foreach name="blog" item="v">
+							<dl>
+								<dt>{$v.name}</dt>
+								<dd class="channel">{$v.title}</dd>
+								<dd class="info">
+									<span class="time">发布于：{$v.time|date='Y年m月d日 H:i:s', ###}</span>
+									<span class="click">点击：{$v.click}</span>
+								</dd>
+								<dd class="content">{$v.summary}</dd>
+								<dd class="read">
+									<a href="{:U('/'.$v['id'])}"  target="_blank">阅读全文</a>
+								</dd>
+							</dl>
+						</foreach>
+						<p>{$page}</p>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<include file="Common:baidu_share" />
+	<include file="Common:footer" />

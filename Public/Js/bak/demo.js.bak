@@ -1,0 +1,41 @@
+		function sleep(milliseconds) {
+		  var start = new Date().getTime();
+		  for (var i = 0; i < 1e7; i++) {
+			if ((new Date().getTime() - start) > milliseconds){
+			  break;
+			}
+		  }
+		}
+		
+		
+		
+			$(function(){
+				$('#start').click(function(){
+					
+					
+									alert('test');
+
+					test();
+				});
+			});
+			
+			function test(){
+					$('#start').hide();
+					var arr=[0, 1, 2, 3, 0, 1];
+					for(var i in arr)
+					{
+						var item = arr[i];
+						console.log(item);
+						
+						var pic = item+".bmp";
+						console.log(pic);
+						
+						var uri = "Images/"+pic;
+						console.log(uri);
+						
+						$("img").attr("src", uri);
+						
+						
+						sleep(660);
+					}
+			}

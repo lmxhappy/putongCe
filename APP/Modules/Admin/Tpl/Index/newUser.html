@@ -1,0 +1,67 @@
+  <div id="oneNewUser"  style="display:block;">
+		<div>
+			<span id="user-info"></span>
+		</div>
+			
+		<div style="padding: 100px 100px 10px;" class="col-xs-6">
+				<form class="bs-example bs-example-form" role="form" id="newUserForm" >
+					
+					<div class="input-group ">
+						<span class="input-group-addon ">被试姓名：</span>
+						<input type="text" class="form-control input-medium" placeholder="如张三" name="subjectUserName">
+					</div>
+					<br>
+					
+					<div class="input-group inline">
+					
+							<!--<span class="input-group-addon inline" style="float:left;"></span>-->
+							<div style="float:left;" class="inline">
+								性别：<label class="radio ">
+									<input type="radio" name="optionsRadios" id="man" value="option1" checked>
+									男
+								</label>
+								<label class="radio ">
+								  <input type="radio" name="optionsRadios" id="woman" value="option2">
+									女					
+								</label>
+							</div>
+						
+					</div>
+					
+					<br>
+
+					
+					<div class="input-group form_datetime inline">
+						<span class="input-group-addon">出生日期：</span>
+						<input type="text" id="datepicker" name="birth">
+
+					</div>
+					<br>
+
+					<div class="input-group form_datetime inline">
+						<span class="input-group-addon">邮箱：</span>
+						<input type="text" id="email" name="email">
+					</div>
+					<br>
+
+					<div class="input-group form_datetime inline">
+						<span class="input-group-addon">手机：</span>
+						<input type="text" id="phone" name="phone">
+					</div>
+					<br>
+					
+					<div class="input-group ">
+						<label for="name">其他信息备注</label>
+						<textarea class="form-control input-medium" rows="3" cols="270" id="desc"></textarea>
+					</div>
+					<br>	
+					
+					<button type="submit" class="btn btn-primary" id="btn-create">添加用户</button>
+
+				</form>
+			</div>
+	</div>
+	
+	<script>
+		var datepicker_image_url = "/Public/Images/calendar.gif";
+	</script>

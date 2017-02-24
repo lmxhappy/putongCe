@@ -1,0 +1,52 @@
+<html>
+<head>
+	<title>权限管理</title>
+	<link type="text/css" href="__PUBLIC__/css/node.css" rel="stylesheet">
+	<script type="text/javascript" src="http://code.jquery.com/jquery-1.10.2.min.js" ></script>
+	<script type="text/css">
+		.table {
+			border:1;
+		}
+	</script>
+</head>
+<body>
+		<table class="table">
+			<tr>
+				<th>ID</th>
+				<th>用户民称</th>
+				<th>上一次登录时间</th>
+				<th>上一次登录IP</th>
+				<th>锁定状态</th>
+				<th>用户所属组别</th>
+				<th>操作</th>
+			</tr>
+			
+			<foreach name="user" item="v">
+				<tr>
+					<td>{$v.id}</td>
+					<td>{$v.username}</td>
+					<td>{$v.logintime | date='y-m-d H:i', ###}</td>
+					<td>{$v.loginip}</td>
+					<td>
+						<if condition='$v["lock"]'>锁定</if>
+					</td>
+					<td>
+						<if condition='$v["username"] eq C("RBAC_SUPERADMIN")'>
+							超级管理员
+						<else/>
+						<ul>
+								<foreach name="v.role" item="value">
+									<li>{$value.name}({$value.remark})</li>
+								</foreach>
+							</ul>
+						</if>
+					</td>
+
+					<td>
+						<a href="{:U('Admin/Rbac/lock_user', array('id'=>$v['id'], 'lock'=>$v['lock']))}"><if condition='$v["lock"]'>解锁<else/>锁定</if></a>
+					</td>
+				</tr>
+			</foreach>
+		</table>
+
+</html>

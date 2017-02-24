@@ -1,0 +1,61 @@
+		<div class="comments">
+			<div class="cmts-do" id="commentsReplyer">      
+				<h3 id="replyer">你的评论</h3>
+				<div class="reply-box" style="display: none;"><p class="reply-info">就没有什么要吐槽的吗</p><p></p></div><!--登录&小组  成员-->
+				<form action="{:U(GROUP_NAME.'/Show/addComment', array('bid'=>$blog['id'], 'uid'=>session('uid')))}" method="POST" id="replyForm" style="display: block;">
+					<textarea id="comment" name="comment" style="display: block;"></textarea>    
+					<div class="cmts-submit-box gclear">
+						<a href="javascript:void 0;" class="draft-btn" id="draftTip"></a>
+						<input type="submit" class="gnbtn-primary" value="发布">
+						<div class="submit-op">
+							<div class="submit-tip-box" id="submitTip">
+								<div class="submit-tip">
+									试试 Ctrl+Enter
+									<b class="gnarrow-up"></b>
+								</div>
+							</div>
+						</div>
+						<div class="cmts-share" id="checkAlias" style="position: relative;"><p>同时分享到：&nbsp;&nbsp;<input id="shareXl" type="checkbox" value="weibo" name="share_opts"><label class="gicon-share-lsina" for="shareXl">新浪微博</label>&nbsp;&nbsp;<input id="shareDb" type="checkbox" value="douban" name="share_opts"><label class="gicon-share-ldb" for="shareDb">豆瓣网</label>&nbsp;&nbsp;<input id="shareAc" type="checkbox" value="activity" name="share_opts"><label for="shareAc">动态</label></p></div>
+						
+					</div>
+				</form>
+				
+			</div>
+			<div class="cmts-title">
+				<div class="gfl">{$num}条评论</div>
+			</div>
+			<ul class="cmts-list">
+				<foreach name="comments" item="v">
+					<li>
+						<div class="cmt-img cmtImg pt-pic">
+							<a href="http://www.guokr.com/i/1889316911/" title="CAPTCHA" target="_blank" data-ukey="v8um9b">
+								<img width="48" height="48" src="http://img1.guokr.com/thumbnail/BJ7gFGDpMag29T5lgAp2WnKnhXp9yUOiKgzgj5AsZyGgAAAAoAAAAEpQ_48x48.jpg">
+							</a>
+						</div>
+						
+						<div class="pt-txt">
+							<span class="cmt-info">{$v.time|friendlyDate}</span>
+							<a  class="cmt-author cmtAuthor" href="" target="_blank" data-ukey="o38mm8">{$v.email}</a>							
+			
+							<div class="cmt-content cmtContent">{$v.comment}</div>
+							<span class="cmt-do">				
+								<span class="disagree">
+									<a href="javascript:void(0)" class="oppose" name="{$v.id}">反对</a>[<a class="cmt-do-num">{$v.onum}</a>]
+								</span>
+								
+								<!--<a onclick="addNum()" href="javascript:void(0);">顶</a>-->
+								<span class="agree">
+									<a class="support" name="{$v.id}">支持</a>
+									[<a class="cmt-do-num">{$v.snum}</a>]
+								</span>
+								<a data-gaevent="post_reply_comment:post" class="cmt-do-quote" href="javascript: void 0;" data-operation="quoteComment">评论</a>
+								<if condition="session('?uid') and $v['uid'] eq session('uid')">
+									<a data-gaevent="post_reply_comment:post" class="cmt-do-quote"  data-operation="quoteComment" href="{:U(GROUP_NAME.'/Show/delComment', array('id'=>$v['id'], 'bid'=>$bid))}">删除</a>
+								</if>
+							</span>
+						</div>				
+					</li>
+				</foreach>
+			</ul>
+
+		</div>

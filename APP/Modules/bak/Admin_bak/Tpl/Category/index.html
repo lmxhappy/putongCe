@@ -1,0 +1,51 @@
+<html>
+<base target="iframe" />
+<head>
+	<title>分类管理</title>
+		<link type="text/css" href="__PUBLIC__/css/public.css" rel="stylesheet">
+	<script type="text/javascript" src="http://code.jquery.com/jquery-1.10.2.min.js" ></script>
+	
+	<script type="text/javascript" src="__PUBLIC__/Js/login.js"></script>
+</head>
+<body>
+	<form method="POST" action="{:U(GROUP_NAME.'/Category/sortCate')}">
+		<table class="table" style="border:1px solid black;">
+			<tr>
+				<th colspan="2">ID</th>
+				<th colspan="2">名称</th>
+				<th colspan="2">模块</th>
+				<th colspan="2">级别</th>
+				<th colspan="2">排序</th>
+				<th colspan="2">操作</th>
+			</tr>
+			<foreach name="cate" item="v">
+				<tr>
+					<td >{$v.id}</td>
+					<td >{$v.html}{$v.name}</td>
+					<td >
+						<input type="text" name="module[]" value="{$v.module}"/>
+					</td>
+					<td >{$v.level}</td>
+					<td>
+						<input type="text" name="sort[]" value="{$v.sort}"/>
+					</td>
+					<td style="display:none">
+						<input type="text" name="id[]" value="{$v.id}"/>
+					</td>
+					<td >
+						[<a href="{:U(GROUP_NAME.'/Category/addCate', array('pid'=>$v['id']))}">添加子分类</a>]
+						[<a href="">修改</a>]
+						[<a href="{:U(GROUP_NAME.'/Category/delete', array('id'=>$v['id']))}">删除</a>]
+					</td>
+				</tr>
+			</foreach>
+			
+			<tr>
+				<td colspan="5" align="center">
+					<input type="submit" value="保存"/>
+				</td>
+			</tr>
+		</table>
+	</form>
+</body>
+</html>

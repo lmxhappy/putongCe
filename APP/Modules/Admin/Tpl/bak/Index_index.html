@@ -1,0 +1,39 @@
+<html>
+<head>
+	<title>后台管理</title>
+</head>
+<body>
+	<div id="top">
+		<div class="menu">
+			<dt><a href="{:U('Admin/Rbac/user')}">用户列表</a></dt>
+			<dt><a href="{:U('Admin/Rbac/role')}">角色列表</a></dt>
+			<dt><a href="{:U('Admin/Rbac/node')}" target="_blank">节点列表</a></dt>
+			<dt><a href="{:U('Admin/Rbac/addUser')}">添加用户</a></dt>
+			<dt><a href="{:U('Admin/Rbac/addRole')}">添加角色</a></dt>
+			<dt><a href="{:U('Admin/Rbac/addNode')}">添加节点</a></dt>
+		</div>
+	</div>
+
+	<div class="exit">
+			<a href="{:U('Admin/Index/logout')}" target="_self">退出</a>
+			<a href="{:U('Admin/Rbac/role')}">角色列表</a>
+			<a href="{:U('Admin/Rbac/node')}" target="_blank">节点列表</a>
+	</div>
+
+	<div id="left">
+		<dl>
+			<dt>帖子管理</dt>
+			<dt><a href="{:U('Admin/MsgManage/index')}">查看所有帖子</a></dt>
+		</dl>
+		<dl>
+			<dt>RBAC</dt>
+			<dt><a href="{:U('Admin/Rbac/index')}">用户列表</a></dt>
+			<dt><a href="{:U('Admin/Rbac/role')}">角色列表</a></dt>
+			<dt><a href="{:U('Admin/Rbac/node')}" target="_blank">节点列表</a></dt>
+			<dt><a href="{:U('Admin/Rbac/addUser')}">添加用户</a></dt>
+			<dt><a href="{:U('Admin/Rbac/addRole')}">添加角色</a></dt>
+			<dt><a href="{:U('Admin/Rbac/addNode')}">添加节点</a></dt>
+		</dl>
+	</div>
+</body>
+</html>

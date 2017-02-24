@@ -1,0 +1,36 @@
+﻿<html>
+<base target="iframe" />
+<head>
+	<title>分类管理</title>
+		<link type="text/css" href="__PUBLIC__/css/public.css" rel="stylesheet">
+	<script type="text/javascript" src="http://code.jquery.com/jquery-1.10.2.min.js" ></script>
+	
+	<script type="text/javascript" src="__PUBLIC__/js/login.js"></script>
+</head>
+<body>
+	<form method="post" action="{:U(GROUP_NAME.'/Category/sortCate')}">
+		<table class="table" style="border:1px solid black;">
+			<tr>
+				<th colspan="2">ID</th>
+				<th colspan="2">属性名称</th>
+				<th colspan="2">颜色</th>
+				<th colspan="2">操作</th>
+			</tr>
+
+			<foreach name="attr" item="v">
+				<tr>
+					<td>{$v.id}</td>
+					<td>{$v.name}</td>
+					<td>
+						<div style="width:20px;height:20px;background:{$v.color}"></div>
+					</td>
+					<td>
+						[<a href="">修改</a>]
+						[<a href="">删除</a>]
+					</td>
+				</tr>
+			</foreach>
+		</table>
+	</form>
+</body>
+</html>

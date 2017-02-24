@@ -1,0 +1,66 @@
+</head>
+<body>
+	<div id="header">
+		<div id="nav">
+			<div id="logo" class="lpos">
+				<a href="{:U('/')}"><img src="__PUBLIC__/Images/logo.jpg" alt="得贝域名"> </a>
+			</div>
+	
+			<php>
+				$cate = M('cate')->order('sort')->select();
+				import('Class.Category', APP_PATH);
+				
+				$cate = Category::unlimitedForLayer($cate);
+				
+			</php>
+			<ul class="menu">
+				<li>
+					<a href="__GROUP__/">首页</a>
+				</li>
+				<div id="mapmore">
+					<div id="head_index" style="left: 591px;">	
+						<foreach name="cate" item="v">
+							<li>
+								<div id="black">
+									<a href="{:U('/c_'.$v['id'])}">{$v.name}</a>
+								</div>
+					
+								<if condition='$v["child"]' >
+									<ul>
+										<foreach name="v.child" item="value">
+										<li><a href="{:U('/c_'.$v['id'])}">{$value.name}</a></li>
+										</foreach>
+									</ul>
+								</if>
+							</li>
+						</foreach>
+					</div>
+				</div>
+			</ul>
+			
+			<span class="clear"></span>
+			<div id="mapmore">
+				<div id="head_index" style="left: 591px;">
+					<div id="black">
+						<a href="blacklist.php" target="_blank">黑名单</a>
+					</div>
+				</div>
+			</div>
+
+			<div id="login">
+		
+					<if condition="session('?username')">
+						<div id="logDiv" class="cookie"><a href="{:U(GROUP_NAME.'/IndexUser/index')}">{$_SESSION['username']}</a>[<a href="{:U(GROUP_NAME.'/Login/loginOut', array('module'=>$module, 'id'=>$fid))}" class="doexit" id="doexit" >退出</a>]
+						</div>
+					<else />
+						<div id="logDiv">
+							<a class="evtLink" id="doLogin" style="display:block;float:left;" href="{:U(GROUP_NAME.'/Login/index/', array('module'=>$module, 'id'=>$fid))}">登录</a>
+							<a id="register" style="display:block;float:left;"  href="{:U(GROUP_NAME.'/Index/register')}" target="_blank">注册</a>
+						</div>
+					</if>
+			</div>
+		</div>
+
+		
+
+	</div>

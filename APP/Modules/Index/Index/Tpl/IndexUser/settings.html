@@ -1,0 +1,56 @@
+<include file="Common:header" />
+		<link type="text/css" href="__ROOT__/Public/Css/index.css" rel="stylesheet">
+		<link type="text/css" href="__ROOT__/Public/Css/style.css" rel="stylesheet">
+		<link type="text/css" href="__ROOT__/Public/Css/huiyuan.css" rel="stylesheet">
+<include file="Common:nav" />
+<!-- 主体开始 -->
+<div class="index_huiyuan"><p>当前位置：&nbsp;<a href="__GROUP__">首页</a>&nbsp; &raquo;&nbsp;<a href="{:U(GROUP_NAME.'/IndexUser/ziLiao')}">会员中心</a></p></div>
+<div class="huiyuan_main">
+	<!--左侧 start-->
+	<div class="page-title">
+            <h2>
+                <a class="page-title-link" href="http://www.guokr.com/i/0478494154/">
+					<span itemprop="name">{$username}</span>
+				</a>
+            </h2>
+    </div>
+		
+	<include file='Common:left'/>
+	
+	<div class="huiy_right">
+		<div class="page-titleline">
+                    <h2>个人资料</h2>
+        </div>
+		<div class="righr_con_str">
+			<div class="register_inpt" style="margin-top:70px;">
+				<form class="gform" id="profile" action="{:U(GROUP_NAME.'/IndexUser/runZiLiao')}" method="post">
+						<label for="nickname">用户名</label>
+						<div class="gform-box">
+							<input type='text' name="nickname" value="{$user.email}"/>
+						</div>
+						<label for="userid">用户ID</label>
+						<div class="gform-box">
+							<span name="userid">{$user.id}</span>
+						</div>
+						<label for="address">地址</label>
+						<div class="gform-box">
+							<input type='text' name="address" value="{$user.location}"/>
+						</div>
+						<label for="introduction">个人简介</label>
+						<div class="introduction">
+							<textarea class="gttxt" cols="40" id="introduction" name="introduction" rows="10">域名专家，得贝网站长</textarea>
+
+						</div>
+						<input  type="submit" value="确认修改" class="gnbtn-primary gform-submit"/>
+				</form>	
+			</div>
+		
+		</div>
+	</div>
+</div>
+
+	<!--页脚 start-->
+<include file='Common:foot'/>
+<!--页脚 end-->
+</body>
+</html>

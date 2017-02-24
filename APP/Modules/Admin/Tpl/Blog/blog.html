@@ -1,0 +1,83 @@
+﻿<html>
+<base target="iframe" />
+<head>
+	<title>分类管理</title>
+		<link type="text/css" href="__PUBLIC__/css/public.css" rel="stylesheet">
+	<script type="text/javascript" src="http://code.jquery.com/jquery-1.10.2.min.js" ></script>
+	
+	<script type="text/javascript" src="__PUBLIC__/js/login.js"></script>
+	
+	<script type="text/javascript" >
+		window.UEDITOR_HOME_URL = '__ROOT__/Data/Ueditor/';
+		window.onload = function(){
+			window.UEDITOR_CONFIG.initialFrameWidth = 1200;
+			window.UEDITOR_CONFIG.initialFrameHeight = 800;
+			window.UEDITOR_CONFIG.savePath = [ 'upload', 'upload1', 'upload2' ];
+			window.UEDITOR_CONFIG.imageUrl = "{:U(GROUP_NAME.'/Blog/upload')}";
+			window.UEDITOR_CONFIG.imagePath = "__ROOT__/Uploads/";
+			UE.getEditor('content');
+		}
+	</script>
+	<js file="__ROOT__/Data/Ueditor/ueditor.config.js" />
+	<js file="__ROOT__/Data/Ueditor/ueditor.all.min.js" />
+</head>
+<body>
+	<form method="post" action="{:U(GROUP_NAME.'/Blog/addBlog')}">
+		<table class="table" style="border:1px solid black;">
+			<tr>
+				<th colspan="2">博文发布</th>
+			</tr>
+			<tr>
+					<td align="right" width="10%" >所属分类：</td>
+					<td>
+						<select name="cid">
+							<option value="">===请选择分类===</option>
+							<foreach name="cate" item="v">
+								<option value="{$v.id}">{$v.html}{$v.name}</option>
+							</foreach>
+						</select>
+					</td>
+				</tr>
+			<tr>
+				<td align="right" >博文属性：</td>
+				<td>
+					<foreach name="attr" item="v">
+						<label style="">
+							<input type="checkbox" value="{$v.id}" name="aid[]"/>&nbsp;{$v.name}
+						</label>
+					</foreach>
+				</td>
+			</tr>
+			<tr>
+				<td align="right" >点击次数：</td>
+				<td>
+					<input type="text" name="click" value="100"/>
+				</td>
+			</tr>
+			<tr>
+				<td align="right" >标题：</td>
+				<td>
+					<input type="text" name="title" />
+				</td>
+			</tr>
+			<tr>
+				<td align="right" >摘要：</td>
+				<td>
+					<input type="text" name="summary" />
+				</td>
+			</tr>
+			<tr>
+				<td colspan="2">
+					<textarea name="content" id="content"></textarea>
+				</td>
+			</tr>
+			
+			<tr>
+				<td align="center" colspan="2">
+					<input type="submit" value="保存博文"/>
+				</td>
+			</tr>
+		</table>
+	</form>
+</body>
+</html>

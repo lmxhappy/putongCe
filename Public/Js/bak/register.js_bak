@@ -1,0 +1,101 @@
+	$(document).ready(function(){	
+		//创建一个*
+		/*
+		$(".a1").each(function(){
+			
+			var hdw = $("<strong class='reda'>*</strong>");
+			
+			$(this).parent().append(hdw);
+
+			});
+		*/
+			//end
+	
+		//判断	
+		var texts = $("form :input");
+		texts.blur(function(){
+			
+			var val = this.value;
+			//$num = texts.index(this);
+			switch(this.name)
+			{
+				case 'user':
+					//alert('user');
+					if (this.value=="" || this.value.length < 6){
+						$(this).siblings('.a2').remove();
+						var hdw1 = $("<span class='a2'>用户名不得小于6位</span>");					
+						$(this).parent().append(hdw1);		
+					}
+					else
+					{
+						var hdw1 = $("<span class='a2'>正确</span>");
+						$(this).parent().append(hdw1);		
+					}
+					break;
+				case 'pwd':
+					//alert('pwd');
+					$(this).siblings('.a2').remove();
+					if (this.value=="" || this.value.length < 6){
+						
+						var hdw1 = $("<span class='a2'>密码不得小于6位</span>");					
+						$(this).parent().append(hdw1);		
+					}
+					else
+					{
+						var hdw1 = $("<span class='a2'>正确</span>");
+						$(this).parent().append(hdw1);		
+					}					
+					break;
+				case 'repwd':
+					$(this).siblings('.a2').remove();
+					var arr = $.map(texts, function(ele){
+						if(ele.name == 'pwd' &&  ele.value == val)
+						{
+							return ele.value;
+						}
+					});
+					//alert(arr.length);
+		
+					if (arr.length <= 0){
+						
+						var hdw1 = $("<span class='a2'>密码不得小于6位</span>");					
+						$(this).parent().append(hdw1);		
+					}
+					else
+					{
+						var hdw1 = $("<span class='a2'>正确</span>");
+						$(this).parent().append(hdw1);		
+					}
+					//alert('repwd');
+					break;
+					
+				case 'email':
+					//alert('email');
+					//alert($(this).val());
+					$(this).siblings('.a2').remove();
+					if($(this).val().length == 0)
+					{	
+							var hdw1 = $("<span class='a2'>邮箱不能为空！</span>");
+							$(this).parent().append(hdw1);
+					}
+					else
+						if(!$(this).val().match(/^\w+((-\w+)|(\.\w+))*\@[A-Za-z0-9]+((\.|-)[A-Za-z0-9]+)*\.[A-Za-z0-9]+$/)){ 
+							//$("#confirmMsg").html("<font color='red'>邮箱格式不正确！请重新输入！</font>"); 
+							var hdw1 = $("<span class='a2'>邮箱格式不正确！请重新输入！</span>");
+							$(this).parent().append(hdw1);	
+							//$(this).focus(); 
+							//return false; 
+						} 
+					break;
+				case 'code':
+					//alert({verify_len);
+					if($(this).val().length != verify_len);
+					{
+						var hdw1 = $("<span class='a2'>验证码输入不正确！请重新输入！</span>");
+						$(this).parent().append(hdw1);
+					}
+					//alert('code');
+					break;
+			}
+		});	//blur  end
+	});	

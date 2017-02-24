@@ -1,0 +1,58 @@
+<html>
+<head>
+	<title>权限管理</title>
+	<link type="text/css" href="__PUBLIC__/css/node.css" rel="stylesheet">
+	<script type="text/javascript" src="http://code.jquery.com/jquery-1.10.2.min.js" ></script>
+	<script type="text/javascript">
+		$(function(){
+			$('.add-role').click(function(){
+				//alert("a");
+				var obj = $(this).parent('tr').clone();
+				vardump(obj);
+				//obj.find('.add-role').remove();
+			
+				$('#last').before(obj);
+				//$('#last').before("<p>Hello world!</p>");
+				//alert('last');
+			});
+		});
+	</script>
+</head>
+<body>
+	<form method="post" action="{:U('Admin/Rbac/addUserHandle')}">
+		<table class="table">
+			<tr>
+				<th colspan="2">添加用户</th>
+			</tr>
+			<tr>
+				<td align="right">用户账号：</td>
+				<td>
+					<input type="text" name='username' />
+				</td>
+			</tr>
+				<td align="right">密码：</td>
+					<td>
+						<input type="password" name='password' />
+					</td>
+			</tr>
+			<tr>
+				<td align="right">所属角色：</td>
+				<td>
+					<select name="role_id[]" >
+						<option value="">请选择角色</option>
+						<foreach name="role" item="v">
+							<option value="{$v['id']}">{$v.name}({$v.remark})</option>
+						</foreach>
+					</select>
+					<span class="add-role">添加一个角色</span>
+				</td>		
+			</tr>
+
+			<tr id='last'>
+				<td colspan="2" align="center">
+					<input type="submit" value="保存添加"/>
+				</td>
+			</tr>
+		</table>
+	</form>
+</html>

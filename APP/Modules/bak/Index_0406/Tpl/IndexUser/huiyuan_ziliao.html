@@ -1,0 +1,36 @@
+<block name="title"><title>{$_COOKIE['user']}-基本资料</title></block>
+<include file='Common:head'/>
+<!-- 主体开始 -->
+<div class="index_huiyuan"><p>当前位置：&nbsp;<a href="__GROUP__">首页</a>&nbsp; &raquo;&nbsp;<a href="#">会员中心</a></p></div>
+<div class="huiyuan_main">
+	<!--左侧 start-->
+<include file='Common:left'/>
+<!--左侧 end-->
+	<div class="huiy_right">
+		<div class="right_ziliao_bj"><span>基本资料</span></div>
+		<div class="righr_con_str">
+			<div class="register_inpt" style="margin-top:70px;">
+		<form action="{:U(GROUP_NAME.'/IndexUser/runZiLiao')}" method="post">
+			<ul>
+				<li style="width:390px; margin-bottom:15px;"><span>登录邮箱：</span><span>{$list.0.email}</span><span id="lei"><a href="" style="margin-left:55px;">&nbsp;登录用户名（不可修改）</a></span></li>
+				<li><span>手机号码：</span><input type='text' name="phone"  value="{$list.0.phone}"/><span id="lei"><a href="">&nbsp;方便我们为您提供更加完善的服务</a></span></li>
+				<li style="width:390px; margin-bottom:25px;"><span>用户　ID：</span><span>{$list.0.userid}</span></li>
+				<li><span>真实姓名：</span><input type='text' name="truename" value="{$list.0.truename}" id="yzm"/></li>
+				<li><span>性　　别：</span><input type="radio" name="sex" id="sexm" value="1"<eq name="list.0.sex" value="1"> checked="checked"</eq>/>男
+				<input type="radio" name="sex" id="sexw"  value="0" <eq name="list.0.sex" value="0"> checked="checked"</eq>/>女</li>
+				<li><span>Q　Q号码：</span><input type='text' name="QQ" value="{$list.0.QQ}"/></li>
+				<li><span>收货地址：</span><input type='text' name="dizhi" value="{$list.0.location}"/><span id="lei"><a href="">&nbsp;地址必须正确，否则无法收货</a></span></li>
+				<li><input  type="submit" value="确认修改" id="sed"/></li>
+			</ul>
+		</form>
+	</div>
+		
+		</div>
+	</div>
+</div>
+
+	<!--页脚 start-->
+<include file='Common:foot'/>
+<!--页脚 end-->
+</body>
+</html>

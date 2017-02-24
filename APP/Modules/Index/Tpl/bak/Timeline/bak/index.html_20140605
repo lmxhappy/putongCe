@@ -1,0 +1,78 @@
+	<include file="Common:header" />
+	
+	<meta http-equiv="Expires" content="0">
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>时间轴</title>
+	 
+
+	<script type="text/javascript" src="__PUBLIC__/Js/FusionCharts.js"></script>
+	<script type="text/javascript" src="__PUBLIC__/Js/timeline.js"></script>
+	<script type="text/javascript" src="__PUBLIC__/Js/jquery-ui-timepicker-addon.js"></script>
+
+	<link href="__PUBLIC__/Css/jquery-ui.css" rel="stylesheet" type="text/css">
+	<link href="__PUBLIC__/Css/jquery-ui-timepicker-addon.css" rel="stylesheet" type="text/css">
+	<link href="__PUBLIC__/Css/timeline.css" rel="stylesheet" type="text/css">
+	
+	<script>
+		var flash_url = "__PUBLIC__/Js/Charts/MSLine.swf";
+		var ajax_url = "{:U(GROUP_NAME.'/Index/Timeline/getXmlData')}";
+		var datepicker_image_url = "__PUBLIC__/Images/calendar.gif";
+		var nodeid = {$fid};
+		var dns_data = "{$xml}";
+		
+	</script>
+	
+	<include file="Common:nav" />
+
+	<center>
+		<div id="select_menu">
+			<div style="float:left;" ui-button ui-widget ui-state-default ui-corner-all>
+				<form>
+					<ul>
+						<li>
+							<div style="float:left;">
+								<a>选择节点</a>
+							</div>
+							
+							<input name="all" type="checkbox" value="0" /><label>全选</label> 
+
+							<foreach name="node_info" item="v">
+								<input name="{$v}" type="checkbox" value="{$key}" <if condition="$key eq $_GET['id']">checked="checked"</if> /><label>{$v}</label> 
+					
+							</foreach>
+						</li>
+						<li>
+							<div >
+								<a>选取时间段</a>
+							</div>
+						</li>	
+						<li>
+							
+							<label>开始时间</label><input type="text" id="start" name="start" />
+							<input type="text" id="start_time" name="start_time" />
+						</li>
+						<li>
+							<label>结束时间</label><input type="text" id="end" name="end" />
+							<input type="text" id="end_time" name="end_time" />
+						</li>
+					</ul>
+				</form>
+			</div>
+		</div>
+	
+		<button  value="获取图表" style="width:100px；height:50px" >获取图表</button>
+		
+		<div id="tip_info">
+			<span>
+				<a id="error_info"></a>
+			</span>
+		</div>
+		<div id="line">
+			<div id="timeline" ></div>
+			<div id="timeline2" ></div>
+
+		</div>
+		
+	</center>
+
+	<include file="Common:footer" />

@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="initial-scale=1.0, user-scalable=no" />
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>中国国家顶级域安全状态</title>
+
+
+<script type="text/javascript" src="__PUBLIC__/js/jquery.min.js"></script>
+<script type="text/javascript" src="__PUBLIC__/js/jquery-ui.min.js"></script>  
+
+
+
+
+<link rel="stylesheet" href="__PUBLIC__/Admin/css/bootstrap.min.css" type="text/css" />
+<link rel="stylesheet" href="__PUBLIC__/Admin/css/jquery.ui.css" type="text/css" />
+<link rel="stylesheet" href="__PUBLIC__/css/style-01.css" type="text/css" />	
+
+<script type="text/javascript" src="http://api.map.baidu.com/api?v=1.5&ak=A5150a60f70789466bfd936bc758067a"></script>
+
+<script type="text/javascript" src="__PUBLIC__/js/addnodes.js"></script>
+<script>
+		var ajax_url =  "{:U(GROUP_NAME.'/Admin/Node/getInfo')}";
+</script>
+
+
+<!--
+<script>
+$(function () {
+
+	
+	
+	
+	$('#dialog-form').dialog();
+	$('#login').dialog();
+	
+	
+	
+	
+	//$('#reg_a').click(function () {
+	//	$('#reg').dialog('open');
+	//});
+	
+});
+</script>
+-->
+</head>
+ <body>
+ <div style="width:800px;height:600px;border:#ccc solid 1px;" id="dituContent"></div>
+
+
+<div id="dialog-form" title="新节点" style="display:none;">
+  <p class="validateTips">请填写新节点信息</p>
+  <div id="login-info" style="color:red;display:none;"></div>
+  <div>
+        <label for="name">英文名<a>*</a></label>
+        <input type="text" name="name" id="name" class="text ui-widget-content ui-corner-all" />
+        <label for="cname">中文名<a>*</a></label>
+        <input type="text" name="cname" id="cname" value="" class="text ui-widget-content ui-corner-all" />
+        <label for="number">节点编号</label>
+        <input type="text" name="id" id="id" value="" class="text ui-widget-content ui-corner-all" />
+		<label for="ipaddr">IP地址<a>*</a></label>
+        <input type="text" name="ipaddr" id="ipaddr" value="" class="text ui-widget-content ui-corner-all" />
+        <!--<input type="submit" />-->
+        <button id="store">提交</button>
+  </div>
+</div>
+ </body>
+ </html>

@@ -1,0 +1,33 @@
+  <div id="user"  class="active" style="display:none;">
+			<div style="padding: 100px 100px 10px;" class="col-xs-6">
+				
+					
+				<table class="table .table-hover">
+					  <caption>用户列表</caption>
+					  <thead>
+						<tr>
+						  <th>姓名</th>
+						  <!--
+						  <th>城市</th>
+						  -->
+						  <th>是否生成新测验？</th>
+						  <th>测验情况</th>
+						</tr>
+					  </thead>
+					  <tbody >
+						<foreach name="userList" item="vo">
+						<tr>
+							<td>{$vo.userName}</td>
+							<!--<td>Bangalore</td>-->
+							<td style="cursor:pointer;">
+								<a  name="{$vo.userName}" class="newTest">新测验</a>
+							</td>
+							<td style="cursor:pointer;">
+								<a>未完成</a>
+							</td>
+						</tr>
+						</foreach>
+					  </tbody>
+				</table>
+			</div>
+	</div>

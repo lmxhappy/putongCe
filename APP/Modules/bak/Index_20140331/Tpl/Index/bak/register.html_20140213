@@ -1,0 +1,35 @@
+<include file="Common:header" />
+		<link type="text/css" href="__ROOT__/Public/Css/index.css" rel="stylesheet">
+		<link type="text/css" href="__ROOT__/Public/Css/style.css" rel="stylesheet">
+		<link type="text/css" href="__ROOT__/Public/Css/login.css" rel="stylesheet">
+		<link type="text/css" href="__ROOT__/Public/Css/cmxform.css" rel="stylesheet">
+		
+		<script type="text/javascript" src="__PUBLIC__/Js/register.js"></script>
+		<script>
+			window.onload = function()
+			{			
+				var verify_len = {$Think.config.verify_length};		
+			};
+		</script>
+
+		<js file="__ROOT__/Public/Js/jquery.validate.min.js" />
+<include file="Common:nav" />
+
+<!-- 主体开始 -->
+<div class="register">
+	<div class="register_bjpic"></div>
+	<div class="register_inpt">
+		<form action="{:U(GROUP_NAME.'/Index/runRegis')}" method="post" name="register" id="register">
+			<ul>
+				<li><span>用户名：&nbsp;&nbsp;</span><input type='text' name="user"  id="user"/><span id="lei"><a href="">&nbsp;登录时使用</a></span></li>			
+				<li><span>设置密码：</span><input type='password' name="pwd" id="pwd" /><span id="lei"><a href="">&nbsp;6位以上字符</a></span></li>
+				<li><span>确认密码：</span><input type='password' name="repwd"  id="repwd" /><span id="lei"><a href="">&nbsp;两次密码必须一致</a></span></li>
+				<li><span>常用邮箱：</span><input type='text' name="email"  id="email"/><span id="lei"><a href="">&nbsp;以后用于用户信息验证</a></span></li>
+				<li><span>验证码：&nbsp;&nbsp;</span><input type="text" name="code"  id="code" /><img id="code" src="{:U('Index/Login/verify')}"><a href="javascript:void(change_code(this));">看不清</a></li>
+				<li><input  type="submit" value="提　　交" id="sed"/></li>
+			</ul>
+		</form>
+	</div>
+</div>
+	<include file="Common:baidu_share" />
+<include file="Common:footer" />

@@ -1,0 +1,64 @@
+<?php
+
+class LinkAction extends Action {
+	public function index(){
+		//p($_POST);
+		
+		/*
+		$data['plusTime'] = I('plusTime');
+		$data['imgTime'] = I('imgTime');
+		$data['testNum'] = I('testNum');
+		$data['$eartPercent'] = I('heartPercent');
+		$data['userTime'] = I('userTime');
+		$data['userName'] = I('userName');
+		*/
+		$data= $_POST;
+		//$data['id']= 1;
+		//p($data);
+		$ret = M("link")->add($data);
+		//p($ret);
+		
+		$id = $ret;
+		
+		
+		if($id >0)
+		{	
+			$arr = array(
+				'id'=>$id
+			);
+			echo json_encode($arr);
+		
+		}
+		/*
+		p(M("link")->getLastSql());*/
+		
+		
+		
+		/*
+		$ret2 = M("user")->select();
+		p($ret2);
+		
+		$ret3 = M("link")->select();
+		p($ret3);
+		$ret4 = M("test")->select();
+		p($ret4);
+
+		$ret5 = M("link2")->select();
+		p($ret5);
+		p(M('link')->getLastSql());
+		*/
+		
+		//echo 'test';
+	}
+
+
+
+
+
+
+
+}
+	
+	
+
+?>

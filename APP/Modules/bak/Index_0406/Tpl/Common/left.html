@@ -1,0 +1,37 @@
+	<div id="leftside">
+		<div class="panel_tab">
+			<div id="tab_left" class="select"></div>
+			<ul>
+			<li id="tags_search" class="select"><span>搜&nbsp;索</span></li>
+			<li id="tab_sp2" class=""></li>
+			<li id="tags_attention" class=""><div title="收藏夹"></div></li>
+			</ul>
+			<div class="" id="tab_sp3"></div>
+				<div id="panelCtrl" class="panelCtrl" title="隐藏查询面板">
+					<div id="panelCtrlButton">
+					</div>
+				</div>
+				<div class="tab_right"></div>
+		</div>
+
+		<div id="proplist" class="proplist" style="height: 100%;">
+			<ul class="property-list">
+				<foreach name="nodes" item="v">
+					<li>	
+						<div class="info-box" name="{$v.lng}|{$v.lat}|{$v.id}">
+							<div class="nIco">
+								<img class="rst{$key+1}" src="__PUBLIC__/Images/pixel.gif" style="background-image: url('__PUBLIC__/Images/3.png');">
+							</div>
+							<div class="info" >
+								<p>第{$v.id}节点</p>	
+								<p>{$v.cname}({$v.name})</p>
+								<p>具体地址：</p>
+								<p>更新时间：<a id="update_time{$v.id}">{$v.create_time}</a></p>
+							</div>
+						</div>
+						<div class="list-line"></div>
+					</li>
+				</foreach>
+			</ul>
+		</div>
+	</div>

@@ -1,0 +1,30 @@
+<include file="Common:header" />
+		<link type="text/css" href="__ROOT__/Public/Css/index.css" rel="stylesheet">
+		<link type="text/css" href="__ROOT__/Public/Css/style.css" rel="stylesheet">
+		<link type="text/css" href="__ROOT__/Public/Css/login.css" rel="stylesheet">
+		<script type="text/javascript" >
+		var verifyURL= '{:U(GROUP_NAME."/Login/verify", '', '')}';
+	</script>
+	<script type="text/javascript" src="__PUBLIC__/js/login.js"></script>
+<include file="Common:nav" />
+
+
+
+
+<!-- 主体开始 -->
+<div class="editPwds" style="margin-bottom: 40px;">
+	<div class="editPwd_bjpic" style="background-image: url(__PUBLIC__/Images/editPwd.jpg);"><p>您还不是我们的会员？</p><a href="{:U(GROUP_NAME.'/Index/register')}">免费注册</a></div>
+	<div class="register_inpt">
+		<form action="{:U(GROUP_NAME.'/Index/runEditPwd')}" method="post">
+			<ul>
+				<li><span>登录账号：</span><input type='text' name="email" /><span id="lei"><a href="">&nbsp;注册时填写的邮箱名称</a></span></li>
+				<li><span>设置密码：</span><input type='password' name="pwd" /><span id="lei"><a href="">&nbsp;6位以上字符</a></span></li>
+				<li><span>确认密码：</span><input type='password' name="repwd" /><span id="lei"><a href="">&nbsp;俩次密码必须一致</a></span></li>
+				<li><input  type="submit" value="提　　交" id="sed"/></li>
+			</ul>
+		</form>
+	</div>
+</div>
+	<include file="Common:baidu_share" />
+<include file="Common:footer" />
+

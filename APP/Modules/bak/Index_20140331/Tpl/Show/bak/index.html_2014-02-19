@@ -1,0 +1,82 @@
+<include file="Common:header" />
+	<link type="text/css" href="__PUBLIC__/Css/monitor.css" rel="stylesheet">
+<include file="Common:nav" />
+
+	   <center>
+	   <div id="node_info">
+	   		<d1 class= "clearfix">
+	   			<div id="infos">
+						<p>节点：{$info.cname}({$info.name})</p>
+						<p>更新时间：<a id ="photo_time">{$info.create_time}</a></p>
+						<p>最新更新时间：<a id="info_update_time"></a>
+							<a><input type="button" value="刷新页面" onclick="reloadPage()" /></a>
+						</p>
+					</div>
+				</d1>
+	   </div>
+      <table width="1201" border="1">
+		<thead></thead>
+		<tbody>
+          <tr>
+            <td width="600" height="480"><div id="dnamechart" align="left"></div></td>
+            <td width="600" height="480"><div id="addrchart" align="right"></div></td>
+          </tr>
+          <tr>
+            <td width="600" height="480"><div id="rel_dnamechart" align="left"></div></td>
+            <td width="600" height="480"><div id="rel_addrchart" align="right"></div></td>
+          </tr>
+          <tr>
+            <td width="600" height="480"><div id="small_addrchart" align="left"></div></td>
+			 <td width="600" height="480"><div id="small_dnamechart" align="left"></div></td>
+          </tr>
+		  <tr>
+            <td width="600" height="480"><div id="ports" align="left"></div></td>
+			<td width="600" height="480"><div id="placeholder" align="left"></div></td>
+          </tr>
+		</tbody>
+      </table>
+        
+    </center>
+
+	<script type="text/javascript">
+		function reloadPage()
+		 {
+		  //window.location.reload()
+			  window.location.replace("http://218.241.118.136:1224/monitor2.php?site=ISC")
+		 }
+	</script>
+	
+	<script type="text/javascript">	
+		var id = {$id};
+		function update()
+		 {	
+			var da = {"id": id };
+				
+			$.post(
+				"{:U(GROUP_NAME.'/Index/Show/get_update_time')}", 
+				da,
+				function(data){
+			
+					$.each(data.nodes, function(key, value)
+					{
+						if(key =="time")
+						{
+							//alert(key+":"+value);
+						
+							document.getElementById("info_update_time").innerHTML = value;
+						}
+					});
+					
+				}, 
+				"json"
+			);
+			
+		  }
+		 setInterval("update()",5000);
+	</script>
+	<script>
+		var data = "";
+		foreach()
+	</script>
+	<js href="__PUBLIC__/Js/show.js" />
+	<include file="Common:footer" />

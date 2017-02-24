@@ -1,0 +1,158 @@
+html{height:100%}
+body{
+	height:95%;
+	margin:0px;
+	padding:0px;
+	top: 10px;
+	font-size: 62.5%; 
+	font: normal 12px "宋体",Arial;
+	color: #464542;
+}
+#leftside {
+margin: 1px 0px 0px 0px;
+width: 345px;
+z-index: 11;
+background-color: #FFFFFF;
+float: left;
+position: relative;
+height: 90%;
+}
+#container{
+ height: 94%;
+ overflow: hidden;
+ margin:0; z-index:10;
+}
+.validateTips { border: 1px solid transparent; padding: 0.3em; }
+label, input { display:block; }
+    input.text { margin-bottom:12px; width:95%; padding: .4em; }
+    fieldset { padding:0; border:0; margin-top:25px; }
+.ui-dialog .ui-state-error { padding: .3em; }
+
+fieldset, img {
+	border: 0;
+}
+
+.panel_tab {
+width: 345px;
+height: 29px;
+position: relative;
+background-color: #F1EEE8;
+}
+.panel_tab li span {
+font-weight: bold;
+font-size: 14px;
+cursor: pointer;
+}
+ol, ul {
+list-style: none;
+}
+
+.property-list li .list-line {
+height: 1px;
+width: auto;
+overflow: hidden;
+margin: 0 15px 0 20px;
+background: #ccc;
+}
+.property-list li  .info-box {
+width: 100%;
+height: 94px;
+margin: 1px 0;
+cursor: pointer;
+}
+
+.info-box .info{
+margin-left: 35px;
+padding: 3px 0;
+}
+
+.property-list li {
+width: auto;
+height: 97px;
+cursor: pointer;
+overflow: hidden;
+}
+
+.proplist {
+overflow-y: auto;
+}
+
+.nIco img.rst1 {
+	background-position: -45px -145px;
+}
+.nIco img.rst2 {
+	background-position: -81px -145px;
+}
+.nIco img.rst3 {
+	background-position: -115px -145px;
+}
+.nIco img.rst4 {
+	background-position: -150px -145px;
+}
+.nIco img.rst5 {
+	background-position: -185px -145px;
+}
+.nIco img.rst6 {
+	background-position: -220px -145px;
+}
+.nIco img.rst7 {
+	background-position: -255px -145px;
+}
+ .nIco img.rst8 {
+	background-position: -290px -145px;
+}
+ .nIco img.rst9 {
+	background-position: -325px -145px;
+}
+ .nIco img.rst10 {
+	background-position: -360px -145px;
+}
+
+.info-box .nIco {
+float: left;
+}
+
+.nIco img {
+background-image: url(../images/3.png);
+background-repeat: no-repeat;
+cursor: pointer;
+}
+.info-box .nIco img {
+width: 30px;
+height: 30px;
+margin-left: 5px;
+}
+
+.rfocus {
+background-color: #f1eee8;
+}
+
+#username {
+	float:left;
+}
+.panelCtrl {
+cursor: pointer;
+position: absolute;
+right: 3px;
+top: 1px;
+height: 28px;
+width: 9px;
+z-index: 1;
+}
+.panelCtrl div {
+background: url("../Images/1.png") -37px -144px;
+margin: 12px 0;
+width: 9px;
+height: 5px;
+font-size: 0;
+}
+.panelCtrl.open {
+background: url("../Images/1.png") -28px -256px;
+right: -15px;
+height: 24px;
+width: 20px;
+}
+.panelCtrl.open div {
+background-position: -45px -144px;
+margin: 9px 0px 0px 7px;
+}

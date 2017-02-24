@@ -1,0 +1,63 @@
+<include file="header" />
+</head>
+<body>
+	<div id="page"> 
+		<div id="content">
+			<div id="beforeTest">
+				<div id="introduce" >
+					<div id="detail">
+						<p>
+							下面有<span id="testNum"></span>轮测试。<br/>
+							<br>
+							每轮测试过程是：首先显示一个加号，接着闪烁显示多张图片，最后用户选择。
+							其中，加号的显示时长是<span id="prepareTime"></span>最长<span></span>毫秒。
+						</p>
+					</div>
+					
+					<div id="nextButton">
+						<a href="javascript:void(0)" class="button button-royal button-pill button-giant" id="nextStep">下一步</a>
+					</div>
+				</div>
+				
+				<div id="begin" style="display:none;">
+					<!--<a href="javascript:void(0)" id="start">start</a>-->
+					<a href="javascript:void(0)" class="button button-royal button-pill button-giant" id="start">开始测验</a>
+					<a href="javascript:void(0)" class="button button-royal button-pill button-giant" id="back">返回</a>
+					
+				</div>
+			</div>
+			
+			
+			<div id="inTest">
+				<div id="transfer" style="display:none;">
+					<img src="" alt="" id="theImg"/>
+				</div>
+				
+				<div id="choice" style="display:none;">
+					<!--
+					<a href="javascript:void(0)" id="yes">yes</a>
+					<a href="javascript:void(0)" id="no">no</a>
+					-->
+					<p>有心按F，无心按J</p>
+				</div>
+			</div>
+			
+			<div id="end" style="display:none;font-size:20px;">
+				<p>
+					测试已经结束，谢谢参与!
+				</p>
+				
+				<div>
+					<div>
+						<img  src="__PUBLIC__/Images/weixin.jpg"  alt="公众号" />
+					</div>
+					
+					<div>
+						<span>手机扫扫，关注公众号</span>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</body>
+</html>

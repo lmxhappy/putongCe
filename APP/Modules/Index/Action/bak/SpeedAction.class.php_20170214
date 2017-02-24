@@ -1,0 +1,62 @@
+﻿<?php
+/*
+首页
+*/
+
+//require_once("Mobile-Detect-2.8.22/Mobile_Detect.php");
+
+class SpeedAction extends Action {
+	public function index()
+	{
+		$this->createMatrix();
+			$this->display();
+
+	}
+	
+	public function createMatrix()
+	{
+		//p('ddddddddddddddd');die;
+		$this->numbers = $this->createNum(175);
+		//p($this->numbers);die;
+	}
+	
+	public function createNum($num)
+	{
+		/*
+		$num = I('num');
+		$num = intval($num);
+		*/
+		if(!$num || $num<=0)
+			return null;
+		
+		$arr = array();
+		for($i=0;$i<10;$i++)
+		{
+			for($j=0;$j<$num;$j++)
+			{
+				array_push($arr, $i);
+			}
+		}
+		/*
+		p($arr);
+		p("0000000000000");
+		*/
+		
+		for($i=0;$i<100;$i++)
+		{
+			usort($arr, array($this,"randomsort"));
+			//console.log(series);
+		}		
+		//p($arr);
+		
+		return $arr;
+	}
+	
+	function randomsort($a, $b) {  
+		$ret = rand(0, 1)>.5 ? -1 : 1;  
+		//p($ret);
+		return $ret;
+		//用Math.random()函数生成0~1之间的随机数与0.5比较，返回-1或1  
+	}  
+}
+?>

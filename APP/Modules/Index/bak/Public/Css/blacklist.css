@@ -1,0 +1,19 @@
+#searchform {
+top: 10px;
+position:relative;
+width: 100%;
+z-index: 99;
+}
+
+table.display {
+margin: 0 auto;
+clear: both;
+width: 100%;
+}
+
+#blackdata 
+{
+	position:relative;
+	top:20px;
+	width:800px;
+}

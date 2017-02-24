@@ -1,0 +1,45 @@
+<include file="Common:header" />
+		<link type="text/css" href="__ROOT__/Public/Css/index.css" rel="stylesheet">
+		<link type="text/css" href="__ROOT__/Public/Css/style.css" rel="stylesheet">
+		<link type="text/css" href="__ROOT__/Public/Css/huiyuan.css" rel="stylesheet">
+<include file="Common:nav" />
+<!-- 主体开始 -->
+<div class="index_huiyuan"><p>当前位置：&nbsp;<a href="__GROUP__">首页</a>&nbsp; &raquo;&nbsp;<a href="{:U(GROUP_NAME.'/IndexUser/ziLiao')}">会员中心</a></p></div>
+<div class="huiyuan_main">
+	<!--左侧 start-->
+	<div class="page-title">
+            <h2>
+                <a class="page-title-link" href="http://www.guokr.com/i/0478494154/">
+					<span itemprop="name">{$username}</span>
+				</a>
+            </h2>
+    </div>
+		
+	<include file='Common:left'/>
+	<!--左侧 end-->
+	<div class="huiyuan_right">
+		<!--未完成的-->
+						
+				<div class="info gpack" id="info">
+					<a id="infoBtn" class="gicon-arrow gfr" href="javascript: void 0;" style="display: none;">查看完整简介</a>
+					<if condition="$user['desc']">
+						<p class="info-intro">				
+							<a>简介：{$user.desc}</a>
+						</p>
+					</if>
+					<p class="gclear">	
+						<span class="info-location">					
+							<a>{$user.location}</a>				
+						</span>
+						
+						<span class="info-blog" style="display: none;">
+							博客：<a target="_blank" href="http://www.deby.cn">http://www.deby.cn</a>
+						</span>					
+					</p>
+				</div>				
+		<!--完成的-->
+	</div>
+</div>
+
+	<include file="Common:baidu_share" />
+<include file="Common:footer" />

@@ -1,0 +1,62 @@
+<include file="header" />
+
+</head>
+<body>
+<div class="nav">
+    <!--头部左侧导航-->
+    <div class="l_menu">
+        <a href="javascript:;" >常用</a>
+        <a href="__ROOT__" target="_blank">主页</a>
+    </div>
+    <!--头部左侧导航-->
+    <!--头部右侧导航-->
+    <div class="r_menu">
+        您好！<a href="{:U('/Admin/Login/logout')}" target="_top">[退出]</a><span>|</span>
+        <a href="__ROOT__" target="_blank">站点首页</a><span>|</span>
+        <a href="#">会员中心</a>
+    </div>
+    <!--头部右侧导航-->
+</div>
+<!--左侧导航-->
+<div class="main">
+	<include file="left-nav" />
+	
+    <!--内容显示区域-->
+		<div class="content" id="content">
+			  <div id="resultContent"  class="active" style="display:block;overflow: auto;height:100%;">
+					<div id="resultList" style="padding: 10px 10px 10px;overflow: auto;position:relative;" class="col-md-5">
+						<table class="table table-hover">
+							  <caption>实验<span id="whoseResult"></span>结果列表：</caption>
+							  <thead>
+								<tr>
+								  <th>序号</th>
+								  <th>实验名称</th>
+								  <th>创建时间</th>
+								  <th>查看</th>
+								</tr>
+							  </thead>
+							  <tbody >
+								<foreach name="testList" item="vo" key="k">
+								<tr class="">
+									<td>{$k}</td>
+									<td>{$vo.name}</td>
+									<td>{$vo.create_time}</td>
+									<td>
+										<a class="getDetail" id="list" href="javascript:void(0);" urlId="{$vo.urlId}" clientId="{$vo.clientId}">点击</a>
+									</td>
+								</tr>
+								</foreach>
+							  </tbody>
+						</table>
+					</div>
+
+				<include file="testResult" />
+			</div>
+		</div>
+		
+</div>
+    <!--内容显示区域-->
+</div>
+<!--左侧导航-->
+</body>
+</html>

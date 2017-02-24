@@ -1,0 +1,118 @@
+<include file="Common:header" />
+	<link type="text/css" href="__PUBLIC__/Css/monitor.css" rel="stylesheet">
+	<script type="text/javascript" src="__PUBLIC__/Js/FusionCharts.js"></script>
+	<js file="__PUBLIC__/Js/show.js" />
+	<script>
+		/**
+		model:"Charts/Pie2D.swf", tag
+		*/
+		function showChart(model, title, tag, data){
+				alert(data);
+			
+				var myChart = new FusionCharts(model, "myChartId1", "600", "480");
+				//var data = "<chart caption='"+title+"'  baseFontSize='15'><set name='208.67.219.0' value='330' /><set name='65.55.37.0' value='236' /><set name='74.125.191.0' value='158' /><set name='65.55.5.0' value='118' /><set name='74.125.186.0' value='110' /><set name='80.73.4.1' value='96' /><set name='74.125.16.0' value='94' /><set name='66.249.74.0' value='89' /><set name='74.125.41.0' value='66' /><set name='74.125.176.0' value='57' /><set name='219.88.187.0' value='52' /><set name='219.88.186.149' value='50' /><set name='66.249.73.0' value='48' /><set name='74.125.40.0' value='43' /><set name='208.115.111.72' value='40' /><set name='74.125.189.0' value='33' /><set name='66.249.76.0' value='32' /><set name='74.125.187.0' value='31' /><set name='66.249.66.0' value='30' /><set name='174.36.22.3' value='30' /><set name='74.125.183.0' value='25' /><set name='150.70.97.0' value='22' /><set name='198.58.103.65' value='21' /><set name='74.125.19.214' value='18' /><set name='199.30.228.0' value='18' /><set name='74.125.182.0' value='17' /><set name='132.249.20.25' value='17' /><set name='209.172.57.133' value='17' /><set name='64.4.15.0' value='16' /><set name='70.38.0.0' value='15' /></chart>";
+				
+				//var full_data = "<chart caption='"+title+"'  baseFontSize='15'>"+data+"<>";
+				
+				myChart.setDataXML(data); 
+				myChart.render(tag);
+		}
+	</script>
+
+<include file="Common:nav" />
+
+	   <center>
+	   <div id="node_info">
+	   		<d1 class= "clearfix">
+	   			<div id="infos">
+						<p>节点：{$info.cname}({$info.name})</p>
+						<p>更新时间：<a id ="photo_time">{$info.create_time}</a></p>
+						<p>最新更新时间：<a id="info_update_time"></a>
+							<a><input type="button" value="刷新页面" onclick="reloadPage()" /></a>
+						</p>
+					</div>
+				</d1>
+	   </div>
+      <table width="1201" border="1">
+		<thead></thead>
+		<tbody>
+          <tr>
+            <td width="600" height="480"><div id="dnamechart" align="left" title="域名"></div></td>
+            <td width="600" height="480"><div id="addrchart" align="right" title="IP地址"></div></td>
+          </tr>
+          <tr>
+            <td width="600" height="480"><div id="rel_dnamechart" align="left" title="访问量最大的IP地址访问的域名"></div></td>
+            <td width="600" height="480"><div id="rel_addrchart" align="right" title="访问量最大的域名的来源IP地址"></div></td>
+          </tr>
+          <tr>
+            <td width="600" height="480"><div id="small_addrchart" align="left" title="该IP网段的IP地址"></div></td>
+			 <td width="600" height="480"><div id="small_dnamechart" align="left" title="该域的子域名"></div></td>
+          </tr>
+		  <tr>
+            <td width="600" height="480"><div id="ports" align="left" title="最大IP地址段的端口使用情况"></div></td>
+			<td width="600" height="480"><div id="placeholder" align="left"></div></td>
+          </tr>
+		</tbody>
+      </table>
+        
+    </center>
+
+	<script type="text/javascript">
+		function reloadPage()
+		 {
+		  //window.location.reload()
+			  window.location.replace("http://218.241.118.136:1224/monitor2.php?site=ISC")
+		 }
+	</script>
+	
+	<script type="text/javascript">	
+		var id = {$id};
+		function update()
+		 {	
+			var da = {"id": id };
+				
+			$.post(
+				"{:U(GROUP_NAME.'/Index/Show/getUpdateTime')}", 
+				da,
+				function(data){
+			
+					$.each(data.nodes, function(key, value)
+					{
+						if(key =="time")
+						{
+							//alert(key+":"+value);
+						
+							document.getElementById("info_update_time").innerHTML = value;
+						}
+					});
+					
+				}, 
+				"json"
+			);
+			
+		  }
+		 setInterval("update()",5000);
+	</script>
+	
+	<js href="__PUBLIC__/Js/show.js" />
+	
+	
+
+	<foreach name="info.data" item="v">
+		<div>{$v}</div>
+		<script>	
+			<?php $source = htmlspecialchars_decode("{$v}", ENT_QUOTES); echo $source;?>
+			var key = "{$key}";
+			//var value = "{$v}";	
+			alert("{$source}");
+			var title = $("#{$key}").attr('title');
+
+			//showChart('__PUBLIC__/Js/Charts/Pie2D.swf', title, key);
+			
+			showChart('__PUBLIC__/Js/Charts/Pie2D.swf', title, key, "{$v}");
+		</script>
+		
+	</foreach>
+		
+	
+	<include file="Common:footer" />

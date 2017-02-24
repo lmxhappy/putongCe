@@ -1,0 +1,56 @@
+		#search{
+			position: relative;
+			top: 20px;
+			width: 850px;
+			height:60px;
+		}
+		#attack{
+			position: relative;
+			top: 20px;
+			width: 850px;
+		}
+		#geo{
+			position: relative;
+			top: 20px;
+			width: 850px;
+		}
+		#search #txt{
+			height:40px;
+			float:left;
+			margin-left:40px;
+		}
+		#txt input {
+			height:100%;
+		}
+		#btn input{
+			width: 130px;
+			height: 40px;
+			color: #fff;
+			font: 700 16px/40px \5FAE\8F6F\96C5\9ED1,\9ED1\4F53,\6587\6CC9\9A7F\9ED1\4F53;
+		}
+		#btn
+		{
+			width: 130px;
+			height: 40px;
+			background: url(../Images/bgs.png) 0 0 repeat-x;
+			margin: 0px;
+			padding: 0px;
+			margin-left: 20px;
+			border-top-style: none;
+			border-right-style: none;
+			border-bottom-style: none;
+			border-left-style: none;
+			cursor: pointer;
+			border: 1px solid #dd621f;
+			-moz-border-radius: 3px;
+			-webkit-border-radius: 3px;
+			border-radius: 3px;
+			float:left;
+		}
+		.no_bg {
+			border: 0 none;
+			padding: 0;
+			background-color: transparent;
+			cursor: pointer;
+			display: block;
+			}

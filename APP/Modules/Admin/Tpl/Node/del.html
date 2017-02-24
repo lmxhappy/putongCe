@@ -1,0 +1,76 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/>
+    <title>删除栏目</title>
+    <script type="text/javascript" src="__PUBLIC__/js/jquery.min.js"></script>
+    <script type="text/javascript" src="__PUBLIC__/js/jquery-ui.min.js"></script>  
+
+    <link rel="stylesheet" href="__PUBLIC__/Admin/css/bootstrap.min.css">
+     <js file='__PUBLIC__/js/js.js'/>
+    <script type="text/javascript">
+
+function onclick1(){
+$( "#message" ).dialog({
+  "width": 500,
+  modal: true,
+  buttons: [
+    {
+      click: function() {
+        $( this ).dialog( "close" );
+      }
+    }
+  ]
+});
+
+
+
+}
+</script>
+    <base target="content"/>
+</head>
+<body>
+<div id="message"  style="width:300px;height:200px;display:none;">
+  <div style="width:300;heidth:200px">
+  <p class="validateTips">你确定要删除</p>
+  <button id="store">提交</button>
+  </div>
+</div>
+
+<div class="tab">
+<ul class="nav nav-pills">
+   
+</div>
+    <div id="base">
+        <form action="" method='post' name='register'>
+       <table class="table table-bordered">
+      <thead>
+        <tr>
+          <th>id</th>
+          <th>name</th>
+          <th>cname</th>
+          <th>addr</th>
+          <th>操作</th>
+        </tr>
+      </thead>
+      <tbody>
+        <foreach name="nodes" item="vo">
+        <tr>
+          <td >{$vo.id}</td>
+          <td>{$vo.name}</td>
+          <td>{$vo.cname}</td>
+          <td>{$vo.addr}</td>
+          <td><a href="{:U('delnodes',array('id'=>$vo[id]))}" value="{$vo.id}" onClick="if(!confirm('确实要删除么？')){return false;}" id="delid">删除</a>
+            <a href="{:U('editornode',array('id'=>$vo[id]))}" value="{$vo.id}"  id="delid">编辑</a>
+          </td>
+
+
+        </tr>
+        </foreach>
+      </tbody>
+    </table>
+        </form>
+    </div>
+</body>
+</html>

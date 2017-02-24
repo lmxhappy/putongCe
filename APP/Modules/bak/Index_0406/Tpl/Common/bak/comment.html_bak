@@ -1,0 +1,10 @@
+	<div id="comments">
+		<if condition="session('?username')">
+			<div>
+				<textarea name="comment" id="comment"></textarea>
+			</div>
+		<else />
+			<div class="ts_nojoin">参与话题讨论，请先<input type="button" value="登录" onclick="go('{:U(GROUP_NAME.'/Login/index')}')">或<input type="button" value="注册" onclick="go('/s/self_regist.html')">
+			</div>
+		</if>
+	</div>

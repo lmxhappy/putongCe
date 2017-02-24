@@ -1,0 +1,71 @@
+<?php
+
+
+class IndexAction extends Action {
+	public function index(){
+			
+		
+		
+		if(!isset($_SESSION['uid'])){
+			redirect('/Admin/Login/index');
+		}
+		
+		//var_dump($_SESSION);die();
+		$this->userList = $this->getUserList();
+		
+		$this->display();
+	}
+	
+	function getUserList()
+	{
+		/*
+		$fields = array('userName', 'id');
+		//$links = M('link')->distinct(true)->field($fields)->select();
+		$links = M('subjects')->group('username')->field($fields)->select();
+		//p($links);die;
+		$this->userList = $links;
+		$records = D('SubjectlinkView')->getAll();
+		p($records);die;*/
+		
+		$model = M();
+		
+		$sentence = "select a.username, b.id from tb_subjects a, tb_links b where a.username=b.userName";
+		$ret = $model->query($sentence);
+		//p($ret);die;
+		
+		/*die;
+		foreach($links as $k=>$v)
+		{
+			
+			p($v);
+		}*/
+		
+		
+		return $ret;
+		//p(M('link')->getLastSql());
+		//p($this->userList);
+	}
+	
+	function createNewUser()
+	{
+		$post = $_POST;
+		$ret = M('subjects')->add($post);
+
+		if(!$ret)
+		{
+			$username = I('username');
+			$ret = M('subjects')->where(array('username'=>$username))->save($post);
+			
+			
+			/*p($ret);
+			
+			$sql = M('subjects')->getLastSql();
+			p($sql);
+			*/
+		}
+		
+		echo $ret;
+	}
+}
+
+?>

@@ -1,0 +1,238 @@
+<?php
+/*
+首页
+*/
+class ShowAction extends Action {
+	public function index()
+	{
+		$id = (int)$_GET['nodeid'];
+
+		/**获取节点的基本信息*/
+		if($res = M('nodes')->find($id))
+		{
+			$cname = $res['cname'];
+			$addr = $res['addr'];
+			$name = $res['name'];
+		}
+		$info = array('cname'=>$cname, 'addr'=>$addr, 'name'=>$name);
+		/**获取最新数据的生成时间*/
+		$where = array('nodeid' =>$id);
+		$nodes_keys = array();
+		if($res2 = M('node_query')->where($where)->order('create_time desc') ->limit(1)->find())
+		{
+			$create_time = $res2['create_time'];
+			$nodes_keys = array("dname_list_key" =>$res2['dname_list_key'], 
+			'addr_list_key'=>$res2['addr_list_key'], 
+			'relation_addr_list_key'=>$res2['relation_addr_list_key'],
+			"relation_dname_list_key"=>$res2['relation_dname_list_key'],
+			"detail_addr_list_key"=>$res2['detail_addr_list_key'],
+			"detail_dname_list_key"=>$res2['detail_dname_list_key'], 
+			"port_list_key"=>$res2['port_list_key']);
+		}
+		$info['create_time'] = $create_time;
+		
+		$this->info = $info;
+		$this->id = $id;
+		
+		/*
+		$fields = array();
+		foreach($fields as $key=>$value)
+		{
+			$query = "select $field from tb_node_query where nodeid='$id' order by create_time desc limit 1";
+		}
+		*/
+		$key_table = array("dname_list_key" =>'domain_list', 
+			'addr_list_key'=>'addr_list', 
+			'relation_addr_list_key'=>"relation_addr_list",
+			"relation_dname_list_key"=> "relation_domain_list",
+			"detail_addr_list_key"=> "detailed_addr_list",
+			"detail_dname_list_key"=> "detailed_domain_list", 
+			"port_list_key"=>"port_list");
+		
+		$key_key = array("dname_list_key" =>'dname', 
+			'addr_list_key'=>'addr', 
+			'relation_addr_list_key'=>"relation_addr",
+			"relation_dname_list_key"=> "relation_dname",
+			"detail_addr_list_key"=> "detailed_addr",
+			"detail_dname_list_key"=> "detailed_dname", 
+			"port_list_key"=>"port_list");
+			
+		$data = array();
+		foreach($nodes_keys as $key=>$value)
+		{
+			$table = $key_table[$key];
+			//$query  = "select list_content from $list_table where list_key = '".$list_key."'";
+			$where = array('list_key'=>$value);
+			$result = M($table)->where($where)->field('list_content')->find();
+			$content = $result['list_content'];
+			
+			$new_key_name = $key_key[$item];
+			$data[]
+		}
+		
+		
+		$this->display();
+	}
+	
+	
+	public function clickNum()
+	{
+		$id = (int)$_GET['id'];
+		
+		$where = array('id'=>$id);
+		$click = M('blog')->where($where)->getField('click');
+		M('blog')->where($where)->setInc('click');
+		
+		echo 'document.write('.$click.')';
+	}
+	
+	public function addComment()
+	{
+		
+		$bid = $_GET['bid'];
+		$uid = $_GET['uid'];
+		//$bid, $uid;
+		if(!$bid )
+		{
+			$this->error("添加评论失败");
+		}
+		if(!$uid)
+		{
+			$this->error("请先登录");
+		}
+		
+		$comment = I('comment');
+		$data = array(
+			'bid'=>$bid,
+			'comment'=>$comment,
+			'uid'=>$uid,
+			'time'=>time()
+		);
+		
+		if(M('blog_comments')->add($data))
+		{
+			$this->success('添加评论成功', U('/'.$bid));
+		}
+		else
+		{
+			$this->error('添加评论失败');
+		}
+		
+	}
+	
+	public function delComment()
+	{	
+		$comment_id = (int)$_GET['id'];
+		if(!$comment_id)
+		{
+			$this->error("删除评论失败_comment_id");
+		}
+		$bid = (int)$_GET['bid'];
+		$uid = session('uid');
+		
+		//未登陆
+		if(!$uid)
+		{
+			$this->error("您未登陆！请先登陆！");
+		}
+		
+		//线确实
+		$comment = M('blog_comments')->where(array('id'=>$comment_id))->find();
+		$comment_uid = $comment['uid'];
+		if($uid != $comment_uid)
+		{
+			$this->error("此评论不是您写的，你没有权限删除！");
+		}
+		if(M('blog_comments')->where(array('id'=>$comment_id))->delete())
+		{
+			$this->success("成功删除评论", U('/'.$bid));
+			//$this->success("成功删除评论", U(GROUP_NAME.'/Show/index'));
+		}
+		else
+		{//$this->display('index');
+			$this->error("删除评论失败");
+		}
+		//$this->display('index');
+	}
+	
+	
+	public function support()
+	{
+		//echo 'document.write("10")';
+		//p($_POST);
+		/*注释掉意味着匿名用户也可以评价
+		$uid = session('uid');
+		if(!$uid)
+		{
+			echo -1;
+		}*/
+	
+		$cid = $_POST['cid'];
+		if(!$cid)
+		{
+			echo -2;
+			die;
+		}
+		
+		$att = I('att');
+		
+		$where = array('id'=>$cid);
+		
+		if($att == 1)
+		{
+			if(M('blog_comments')->where($where)->setInc('snum'))
+			{
+				$snum = M('blog_comments')->where($where)->getField('snum');
+			
+				echo $snum;
+			}
+			else
+			{
+		
+				echo -3;
+			}
+		}
+		if($att == -1)
+		{
+			if(M('blog_comments')->where($where)->setInc('onum'))
+			{
+				$onum = M('blog_comments')->where($where)->getField('onum');
+			
+				echo $onum;
+			}
+			else
+			{
+		
+				echo -3;
+			}
+		}
+		
+		
+	//	return json_encode("{'1':'1'}");
+	}
+	
+	function get_update_time()
+	{
+		//p($_POST);
+		$id = I('id');
+
+		$time = 0;
+		/**获取最新数据的生成时间*/
+		$where = array('nodeid' =>$id);
+		if($res = M('node_query')->where($where)->order('create_time desc') ->limit(1)->find())
+		{
+			$time = $res['create_time'];
+		}
+		
+		//echo $create_time;
+		
+		$arr = array("id"=>$id, "time"=>$time);
+		
+		$array = array("nodes"=>$arr);
+		echo json_encode($array);
+	}
+	
+
+	
+}
+?>

@@ -1,0 +1,153 @@
+.feature_img img{border:1px solid #ddd;box-shadow:rgba(0,0,0,0.16) 0px 2px 3px 0px}
+img {
+	height: auto;
+	max-width: 100%;
+	vertical-align: middle;
+	border: 0;
+	-ms-interpolation-mode: bicubic;
+}
+.left_info{
+	color:#999999;
+	display:block;
+	float:left;
+	margin-top:15px;
+}
+.span4{
+    width: 31.623931623931625%;
+    *width: 31.570740134569924%;
+  }
+.right_info 
+{
+	float: right;
+	margin-top:15px;
+}
+.span8{width:65.95744680851064%;*width:65.90425531914893%}
+
+.blogPost {
+	font-size: 14px;
+}
+.line_dashed {
+	border-top: 1px dashed #C6C6C6;
+	margin-top: 15px;
+	margin-bottom: 15px;
+}
+
+.row-fluid {
+    width: 100%;
+	height: auto;
+	font-size: 14px;
+    *zoom: 1;
+  }
+.row-fluid:before,
+.row-fluid:after {
+    display: table;
+    line-height: 0;
+    content: "";
+}
+
+.box-inset {
+	background: #EFEFEF;
+	-webkit-border-radius: 4px;
+	-moz-border-radius: 4px;
+	-ms-border-radius: 4px;
+	-o-border-radius: 4px;
+	border-radius: 4px;
+	-webkit-box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2) inset;
+	-moz-box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2) inset;
+	box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2) inset;
+	margin-bottom: 15px;
+	padding: 15px 10px;
+}
+
+.box-inset > .domain-data:first-child {
+	padding-top: 0;
+}
+.box-inset > .domain-data:last-child {
+padding-bottom: 0;
+}
+.domain-data {
+	text-shadow: 0 1px 0 white;
+	padding: 15px 0;
+}
+
+table {
+	border-collapse: collapse;
+	width: 100%;
+}
+table {
+	border-collapse: collapse;
+	border-spacing: 0;
+}
+tbody {
+display: table-row-group;
+vertical-align: middle;
+border-color: inherit;
+}
+
+tr {
+border-bottom: 1px solid #CCC;
+}
+.domain-data th:first-child, .domain-data td:first-child {
+padding-left: 5px;
+width: 160px;
+}
+.domain-data th {
+font-size: 11px;
+}
+.domain-data th, .domain-data td {
+border-bottom: 1px solid #D7D7D7;
+}
+th {
+font-weight: bold;
+white-space: nowrap;
+}
+td, th {
+padding: 7px 10px;
+text-align: left;
+}
+strong, th {
+font-weight: bold;
+}
+.contents-l .content, .contents-r .content {
+margin-bottom: -1px;
+padding: 0 10px 16px 0;
+border-bottom: 1px solid #e9e9e9;
+overflow: hidden;
+color: #999;
+font-size: 14px;
+}
+.contents {
+	line-height: 26px;
+}
+
+.gclear {
+display: block;
+min-height: 1%;
+}
+.gclear:after {
+content: ".";
+display: block;
+height: 0;
+clear: both;
+visibility: hidden;
+}
+.contents-l, .contents-r {
+	width: 330px;
+	float: left;
+	overflow: hidden;
+}
+.contents-r {
+float: right;
+}
+.grow {
+	display: block;
+	height:auto !important;
+	margin-left: auto;
+	margin-right: auto;
+	width: 960px;
+}
+
+.index-page .main {
+width: 680px;
+float: left;
+}

@@ -1,0 +1,72 @@
+</head>
+<body>
+	<div id="header">
+		<div id="nav">
+			<div id="logo" class="lpos">
+				<a href="{:U('/')}"><img src="__PUBLIC__/Images/logo.jpg" alt="中国国家顶级域安全状态"> </a>
+			</div>
+			<style>
+			 .current a, .current a:hover, .sub-nav .logged .current a:active {
+				background: #85c155;
+				color: #FFF;
+				font-weight: normal;
+				box-shadow: none;
+			}
+			</style>
+			<php>
+				$cate = M('cate')->order('sort desc')->order('accessNum desc')->select();
+				import('Class.Category', APP_PATH);
+				
+				$cate = Category::unlimitedForLayer($cate);
+				
+				
+				$id = $_GET['id']?$_GET['id']:0;
+				
+				R('HotCate/accessNum',array(array(MODULE_NAME)));
+				
+			</php>
+			
+			<div class="menu">		
+				<div id="mapmore">
+					
+							<li>
+								<a href="__GROUP__/">首页</a>
+							</li>
+						<foreach name="cate" item="v">
+							<li  <if condition="MODULE_NAME eq $v['module']">class="current"</if>>
+								<if condition="$v['prefix']">
+									<a href="{:U('/'.$v['prefix'].'_'.$id)}">{$v.name}</a>
+								<else />
+									<a href="{:U('/'.$v['module'])}">{$v.name}</a>
+								</if>
+					
+								<if condition='$v["child"]' >
+									<ul>
+										<foreach name="v.child" item="value">
+										<li><a href="{:U('/c_'.$id)}">{$value.name}</a></li>
+										</foreach>
+									</ul>
+								</if>
+							</li>
+						</foreach>
+						
+					
+				</div>
+			</div>
+			
+			<div id="login">
+				<if condition="session('?username')">
+					<div id="logDiv"><a href="{:U(GROUP_NAME.'/IndexUser/index')}">{$_SESSION['username']}</a>[<a href="{:U(GROUP_NAME.'/Login/loginOut', array('module'=>$module, 'id'=>$fid))}" class="doexit" id="doexit" >退出</a>]
+					</div>
+				<else />
+					<div id="logDiv">
+						<a class="evtLink" id="doLogin" style="display:block;float:left;" href="{:U(GROUP_NAME.'/Login/index/', array('module'=>$module, 'id'=>$fid))}">登录</a>
+						<a id="register" style="display:block;float:left;"  href="{:U(GROUP_NAME.'/Index/register')}" target="_blank">注册</a>
+					</div>
+				</if>
+			</div>
+		</div>
+
+		
+
+	</div>

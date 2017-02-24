@@ -1,0 +1,60 @@
+    <!--主体左侧导航-->
+    <div class="left_menu">
+        <div class="menuid_0">
+			<!--
+            <dl>
+                <dt>节点管理</dt>
+                    <dd>
+                        <a href="{:U('Node/add')}">添加节点</a>
+                        <a href="{:U('Node/del')}">编辑节点</a>
+                    </dd>
+            </dl>
+			-->
+			
+			<!--
+            <dl>
+                <dt>网站配置</dt>
+                    <dd>
+                        <a href="{|U:'Config/Config/edit_config'}">配置管理</a>
+                    </dd>
+            </dl>
+			-->
+            <dl>
+                <dt>用户管理</dt>
+                    <dd id="userList" class="active" >
+                         <a href="{:U('/Admin/Index/getUser')}">用户列表</a>
+
+                    </dd>
+					 
+					<dd id="newuser" >
+                        <a href="{:U('/Admin/Index/createUser')}">添加新用户</a>
+                    </dd>
+					
+            </dl>
+			
+			 <dl>
+                <dt>工具</dt>
+                 <dd id="new">
+                        <a href="{:U('/Admin/Index/getUrl')}" menuid="{$m.menuid}">生成测试页面</a>
+                       
+                 </dd>
+				 
+				  <dd id="testResult">
+                        <a href="{:U('/Admin/Index/result')}" menuid="{$m.menuid}">测试结果</a>
+                       
+                 </dd>
+            </dl>
+			
+			 <dl>
+                <dt>实验</dt>
+                 <dd id="new">
+                        <a href="{:U('/Admin/Index/testList')}" menuid="{$m.menuid}">实验列表</a> 
+                 </dd>
+				 
+				<dd id="newtest" >
+                        <a href="{:U('/Admin/Index/createTest')}">添加新实验</a>
+                </dd>
+            </dl>
+        </div>
+    </div>
+    <!--主体左侧导航-->

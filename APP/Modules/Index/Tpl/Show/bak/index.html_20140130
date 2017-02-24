@@ -1,0 +1,91 @@
+<include file="Common:header" />
+		<link type="text/css" href="__ROOT__/Public/Css/index.css" rel="stylesheet">
+		<link type="text/css" href="__ROOT__/Public/Css/style.css" rel="stylesheet">
+		<link type="text/css" href="__ROOT__/Public/Css/comments.css" rel="stylesheet">
+		
+		<js file="__PUBLIC__/Js/comment.js" />
+		<js file="__PUBLIC__/Js/jquery.jqprint-0.3.js" />
+		<script type="text/javascript">
+			window.UEDITOR_HOME_URL = '__ROOT__/Data/Ueditor/';
+			window.onload = function(){
+				window.UEDITOR_CONFIG.initialFrameWidth = 650;
+				window.UEDITOR_CONFIG.initialFrameHeight = 200;
+				window.UEDITOR_CONFIG.savePath = [ 'upload', 'upload1', 'upload2' ];
+				window.UEDITOR_CONFIG.imageUrl = "{:U(GROUP_NAME.'/Blog/upload')}";
+				window.UEDITOR_CONFIG.elementPathEnabled = false;
+				window.UEDITOR_CONFIG.imagePath = "__ROOT__/Uploads/";
+				window.UEDITOR_CONFIG.toolbars = [
+            ['fullscreen', 'source', '|', 'undo', 'redo', '|','bold', 'italic', 'insertimage', 'insertvideo', 'link', 'blockquote', 'insertorderedlist', 'insertunorderedlist']
+        ]
+				UE.getEditor('comment');
+			}
+		</script>
+		<script>	
+			window.onload=function()
+			{
+			
+				$(".support").bind("click", function()
+				{
+						
+						//旁边的num显示节点
+						var num_node = $(this).parent(".cmt-do").children(".cmt-do-num");
+						
+						var tx = num_node.text();
+						
+					 
+					  $.ajax({
+						  type: 'POST',
+						  url: "{:U(GROUP_NAME.'/Index/Show/support')}",
+						  data: {"bid":<php>echo $blog["id"];</php>, "cid":this.name, "snum":tx}, 
+						  success: function(data)
+						  {
+							if(data >= 1)
+							{
+								num_node.text(parseInt(tx)+1);
+							}
+						  },
+						  error: function(){
+							alert('Error loading XML document');
+						  },
+						  dataType: "html"
+					});
+
+				});
+				 
+			};
+		</script>
+		<js file="__ROOT__/Data/Ueditor/ueditor.config.js" />
+		<js file="__ROOT__/Data/Ueditor/ueditor.all.min.js" />
+<include file="Common:nav" />
+
+	<div id="cnt" style="overflow:hidden;">
+		<div class="wrap">
+			<div class="grow index-page">
+				<div class="main">
+					<div class="contents gclear" >
+						<div class="location">
+							<a href="">首页</a>
+							<php>$last = count($parents) - 1;</php>
+							<foreach name="parents" item="v">
+								<a href="{:U('/c_'.$v['id'])}">{$v.name}</a><if condition='$key neq $last'>></if>
+							</foreach>
+						</div>
+						<div class="title">
+							<p>{$blog.title}</p>
+						</div>
+						
+						<div>
+							<span class="time">发布于：{$blog.time|date='Y年m月d日 H:i:s', ###}</span>
+							<span class="click">已被阅读：<script type="text/javascript" src='{:U(GROUP_NAME."/Show/clickNum", array("id"=>$blog["id"]))}'></script>次</span>
+						</div>
+						<div class="content">{$blog.content}</div>
+					</div>
+					
+					<include file="Common:comment" />
+				</div>
+			</div>
+		</div>
+	</div>
+	
+	<include file="Common:baidu_share" />
+	<include file="Common:footer" />

@@ -1,0 +1,178 @@
+@charset "UTF-8";
+body {
+    background: none repeat scroll 0 0 #F8F8F8;
+    font-family: 'Lato',Arial,Helvetica,sans-serif;
+    font-style: normal;
+    font-weight: normal;
+    line-height: 1;
+    margin: 0;
+    padding: 0;
+    position: relative;
+}
+ul, ol, dl {
+    font-family: inherit;
+    font-size: 1em;
+    line-height: 1.6;
+    list-style-position: outside;
+    margin-bottom: 1.25em;
+    list-style: none;
+}
+
+
+a {
+    color: #266AAE;
+     text-decoration: underline;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+div, dl, dt, dd, ul, ol, li, h1, h2, h3, h4, h5, h6, pre, form, p, blockquote, th, td {
+    direction: ltr;
+    margin: 0;
+    padding: 0;
+}
+
+
+
+.row{
+    margin: 0 auto;
+    width: 100%;
+}
+.row .column, .row .columns {
+    float: left;
+    padding-left: 0.9375em;
+    padding-right: 0.9375em;
+    position: relative;
+}
+.row .large-8 {
+    position: relative;
+    width: 66.6667%;
+}
+
+
+
+
+.jobwrapper {
+    background: none repeat scroll 0 0 #FFFFFF;
+    margin-top: 2em;
+    overflow: hidden;
+    padding: 1.4em;
+}
+.titlul {
+    color: #4A4A4A;
+    font-family: 'Lato',Arial,Helvetica,sans-serif;
+    text-align: left;
+}
+.casutast{
+    float: left;
+    width: 89%;
+}
+.titlul h1 {
+    font-size: 1.5em;
+    font-weight: 300;
+    margin-bottom: 0.5em;
+}
+.descriere {
+    color: #383838;
+    float: left;
+    font-size: 0.91em;
+    margin: 1em 0 0;
+    width: 100%;
+}
+
+.gform_wrapper {
+    margin: 10px 0;
+    max-width: 98%;
+    overflow: inherit;
+}
+form {
+    margin: 0 0 1em;
+}
+.gform_wrapper form {
+    text-align: left;
+}
+.gform_wrapper_1 ul li, .gform_wrapper_1 form li {
+    list-style: none outside none !important;
+    margin-left: 0 !important;
+    overflow: visible;
+}
+label {
+    color: #4D4D4D;
+    cursor: pointer;
+    display: block;
+    font-size: 0.875em;
+    font-weight: 500;
+    margin-bottom: 0.1875em;
+}
+.gfield_label {
+    clear: both;
+    display: inline-block;
+    font-weight: bold;
+    line-height: 1.3em;
+    margin: 10px 0 4px;
+}
+
+input[type="text"], input[type="password"], input[type="date"], input[type="datetime"], input[type="datetime-local"], input[type="month"], input[type="week"], input[type="email"], input[type="number"], input[type="search"], input[type="tel"], input[type="time"], input[type="url"], textarea {
+    -moz-box-sizing: border-box;
+    background-color: #FFFFFF;
+    color: rgba(0, 0, 0, 0.75);
+    display: block;
+    font-family: inherit;
+    font-size: 0.875em;
+    height: 2.3125em;
+    margin: 0 0 1em;
+    padding: 0.5em;
+    transition: all 0.15s linear 0s;
+    width: 100%;
+}
+
+.gform_wrapper input[type="text"], .gform_wrapper input[type="url"], .gform_wrapper input[type="email"], .gform_wrapper input[type="tel"], .gform_wrapper input[type="number"], .gform_wrapper input[type="password"] {
+    font-family: inherit;
+    font-size: 11px;
+    letter-spacing: normal;
+    outline-style: none;
+    padding: 5px 2px;
+}
+input.medium, .gform_wrapper .top_label select.medium {
+    width: 47%;
+    padding-right: 2px;
+}
+textarea {
+    font-family: inherit;
+    font-size: 11px;
+    letter-spacing: normal;
+    outline-style: none;
+    padding: 4px 2px;
+    resize: none;
+    height: 150px;
+     width:60%;
+    background-color: #FFFFFF;
+
+}
+
+body {
+    background: none repeat scroll 0 0 #F3F3F3;
+    color: #333333;
+    font-family: Arial;
+    font-size: 12px;
+    line-height: 1.5;
+    overflow-x: hidden;
+    overflow-y: auto;
+}
+
+
+div.wrap {
+    padding: 20px 20px 50px;
+    
+
+}
+div.wrap .table2{
+    width: 800px;
+}
+
+div.wrap .table2 thead{
+    height: 30px;
+    background-color: F3F3F3;
+    
+}

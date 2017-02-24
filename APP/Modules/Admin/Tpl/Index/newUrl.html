@@ -1,0 +1,68 @@
+  <div  id="newUrl" style="display:block;">
+		
+			
+			<div style="padding: 100px 100px 10px;overflow: auto;height:100%;" class="col-xs-6">
+				<div>
+					<span id="newUrlInfo">
+					
+					</span>
+				</div>
+				<form class="bs-example bs-example-form" role="form" id="myform" >
+					<div  class="input-group" style="width:100%;">
+						<input name="url" class="form-control input-lg" type="text" placeholder="新生成的url在此显示！" readonly>
+					</div>
+					<br>
+					
+					<div class="input-group">
+						<span class="input-group-addon">加号显示时长：</span>
+						<input type="text" class="form-control" placeholder="如2000" name="plusTime">
+						<span class="input-group-addon">毫秒</span>
+					</div>
+					<br>
+					
+					<div class="input-group">
+						<span class="input-group-addon">图片显示时长：</span>
+						<input type="text" class="form-control" placeholder="如66" name="imgTime">
+						<span class="input-group-addon">毫秒</span>
+					</div>
+					<br>
+					
+					<div class="input-group">
+						<span class="input-group-addon">测试轮数：  </span>
+						<input type="text" class="form-control" placeholder="如60" name="testNum">
+						<span class="input-group-addon">次</span>
+					</div>
+					<br>
+					
+					<div class="input-group">
+						<span class="input-group-addon">心形出现的几率：</span>
+						<input type="text" class="form-control" placeholder="如50" name="heartPercent">
+						<span class="input-group-addon">%</span>
+					</div>
+					<br>
+					
+					<div class="input-group">
+						<span class="input-group-addon">留给用户选择的时间：</span>
+						<input type="text" class="form-control" placeholder="如3000" name="userTime"  class="required">
+						<span class="input-group-addon">毫秒</span>
+					</div>
+					
+					<br>
+					<div class="input-group ">
+						<span class="input-group-addon ">被试姓名：</span>
+						<input type="text" class="form-control input-medium" placeholder="如张三" name="userName">
+					</div>
+					<br>
+					
+					<div class="input-group ">
+						<label for="name">开场语</label>
+						<textarea class="form-control input-medium" rows="3" cols="270"></textarea>
+					</div>
+					<br>	
+					
+					<button type="submit" class="btn btn-primary">生成测试页面</button>
+					<button id="default" class="btn btn-primary">使用默认值</button>
+
+				</form>
+			</div>
+	</div>

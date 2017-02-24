@@ -1,0 +1,68 @@
+<include file="Common:header" />
+	<link type="text/css" href="__PUBLIC__/Css/monitor.css" rel="stylesheet">
+	
+	    <title>黑名单</title>
+    <link href="__PUBLIC__/Css/blacklist.css" rel="stylesheet" type="text/css">
+
+	<script src="__PUBLIC__/Js/jquery.dataTables.min.js"></script>
+	<script src="__PUBLIC__/Js/attack.js"></script>
+	<style type="text/css" title="currentStyle">
+		@import "__PUBLIC__/Css/jquery.dataTables.css";
+		@import "__PUBLIC__/Css/demo_table.css";
+	</style>
+	<link href="__PUBLIC__/Css/attack.css" rel="stylesheet" type="text/css">
+	<script>
+		var ajax_url =  "{:U(GROUP_NAME.'/Index/Attack/getAttacklist')}";
+		var geo_ajax_url =  "{:U(GROUP_NAME.'/Index/Attack/getAttackGeolist')}";
+	</script>
+	
+<include file="Common:nav" />
+	<center>
+		<!--<div id="left">
+			<div id="attack">
+				<a href="attack"></a>
+			</div>
+			<div id="geo">
+				<a href="geo"></a>
+			</div>
+		</div>-->
+		<div id="search">
+				<div id="txt">
+					<input type="text" id="target" name="target" />				
+				</div>
+				<div id="btn">
+					<input type="submit" value="检　　索" class="no_bg" />
+				</div>
+		</div>
+		<div id="attack" style="display:none;">
+				<table id="attacklist" class="display dataTable">
+					<thead> 
+					<tr>
+						<th>节点</th>
+						<th>查询量</th>
+						<th>总查询量</th>
+						<th>占比</th>
+						<th>时间</th>
+					</tr>
+					</thead> 
+					<tbody> 
+					</tbody>
+				</table>
+		</div>
+		<div id="geo" style="display:none;">
+				<table id="attackgeolist" class="display dataTable">
+					<thead> 
+					<tr>
+						<th class="sorting_asc">地址</th>
+						<th >地理位置</th>
+						<th>查询量</th>
+						<th>占比</th>
+					</tr>
+					</thead> 
+					<tbody> 
+					</tbody>
+				</table>
+		</div>
+	</center>
+	
+	<include file="Common:footer" />

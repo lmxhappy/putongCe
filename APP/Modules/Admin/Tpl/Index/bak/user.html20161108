@@ -1,0 +1,63 @@
+  <div id="user"  class="active" style="display:none;">
+			<div style="padding: 100px 100px 10px;" class="col-xs-6">
+				
+					
+				<table class="table .table-hover">
+					  <caption>用户列表</caption>
+					  <thead>
+						<tr>
+						  <th>姓名</th>
+						  <!--
+						  <th>城市</th>
+						  -->
+						  <th>是否生成新测验？</th>
+						  <th>测验情况</th>
+						  <th>测验链接</th>
+						</tr>
+					  </thead>
+					  <tbody >
+						<foreach name="userList" item="vo">
+						<tr>
+							<td>{$vo.username}</td>
+							<!--<td>Bangalore</td>-->
+							<if condition="$vo.urlId neq null">
+								<td style="cursor:pointer;">
+									<a href="javascript:void(0);" name="toNewTestUrl" class="newTest" userName="{$vo.username}">新测验</a>
+								</td>
+								<td style="cursor:pointer;">
+									<if condition="$vo.did neq null">
+										<a>未完成</a>
+									<else />
+										<a>查看结果</a>									
+									</if>
+								</td>
+								<td style="cursor:pointer;">
+									<a href="{:U('/s_'.$vo['urlId'])}">{:U('/s_'.$vo['urlId'])}</a>
+								</td>
+							<else />
+								<td style="cursor:pointer;">
+									<a  name="newTestUrl" class="newTest" userName="{$vo.username}">生成测验</a>
+								</td>
+								<td style="cursor:pointer;">
+									<a>-</a>
+								</td>
+								<td style="cursor:pointer;">
+									<a href="javascript:void(0);">-</a>
+								</td>
+							</if>
+						</tr>
+						</foreach>
+					  </tbody>
+				</table>
+			</div>
+	</div>
+	
+	<script>
+		$(function(){
+			$(".toNewTestUrl").click(function(){
+				alert();
+			});
+		});
+	</script>
+	
+	

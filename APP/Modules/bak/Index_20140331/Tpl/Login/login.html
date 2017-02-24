@@ -1,0 +1,30 @@
+<include file="Common:header" />
+		<link type="text/css" href="__ROOT__/Public/Css/index.css" rel="stylesheet">
+		<link type="text/css" href="__ROOT__/Public/Css/style.css" rel="stylesheet">
+		<link type="text/css" href="__ROOT__/Public/Css/login.css" rel="stylesheet">
+		<script type="text/javascript" >
+		var verifyURL= '{:U(GROUP_NAME."/Login/verify", '', '')}';
+	</script>
+	<script type="text/javascript" src="__PUBLIC__/Js/login.js"></script>
+<include file="Common:nav" />
+
+
+<!-- 主体开始 -->
+<div class="login_ht">
+	<div class="login_bjpic"></div>
+	<div class="login_inpt">
+		<div class="login_deng"><p>您还不是我们的会员？</p><a href="{:U(GROUP_NAME.'/Index/register')}">免费注册</a></div>
+		<form action="{:U(GROUP_NAME.'/Login/login', array('module'=>$module, 'id'=>$id))}" method="post">
+			<ul>
+				<li><span>用户名：</span><input type='text' name="username" /></li>
+				<li><span>密　码：</span><input type='password' name="password" /><span id="lei"><a href="{:U(GROUP_NAME.'/Index/editPwd')}">&nbsp;忘记密码？</a></span></li>
+				<li><span>验证码：</span><input type='text' name="code" class="code"/><span id="lei"><img style='margin-left:8px;' src="{:U(GROUP_NAME.'/Login/verify')}"  id="code"/><a href="javascript:void(change_code(this));">看不清</a></span></li>
+				<li><input type="checkbox" name="cookie" value="30" checked="checked"/><p id="cook">30天内自动登录</p></li>
+				<li><input  type="submit" value="登　　录" id="sub"/></li>
+				<li id="zhao">您还可以：<a href="{:U(GROUP_NAME.'/Index/editPwd')}">找回密码</a>或<a href="{:U(GROUP_NAME.'/Index/register')}">免费注册</a></li>
+			</ul>
+		</form>
+	</div>
+</div>
+	<include file="Common:baidu_share" />
+<include file="Common:footer" />

@@ -1,0 +1,96 @@
+var index=0;
+var timer=null;
+var interTime=1000;
+var arr=[0, 1, 2, 3, 0, 1];
+
+$(function(){
+	$('#start').click(function(){
+		test();
+	});
+});
+
+function test(){
+	$('#start').hide();
+	timer=setInterval(interval_func,interTime);
+}
+
+
+function interval_func()
+{
+		if(index<arr.length){
+			var item=arr[index++]
+			var uri="Images/"+item+".bmp";
+			$("#theImg").attr("src",uri);
+			console.log(uri);
+		}else{
+			//prompt("input anything");
+			$('#choice').show();
+			clearInterval(timer);    //清除定时器
+			bind_keyboard();
+			waitForChoice(3000);
+			$('#choice').hide();
+			$("#yes").keydown(function(){
+				alert('yes');
+			});
+					//鏀瑰彉棰戠巼
+			this.interTime=100;
+			this.index=0;
+		}
+	
+}
+var haveChosen = false;
+function bind_keyboard(){
+	$(document).keydown(keydownFunc);
+	console.log('bind keyboard');
+}
+
+function keydownFunc(event)
+{
+         if(event.ctrlKey && event.which == 13)       //13等于回车键(Enter)键值,ctrlKey 等于 Ctrl
+         {
+			alert("按了ctrl+回车键!")
+			haveChosen = true;
+        }
+}
+
+/***等待用户案件
+milliseconds*/
+function waitForChoice(timeout)
+{
+	if(timeout<=0)
+	{
+		console.log('timeout should be positive');
+		return;
+	}
+	
+	var start = new Date().getTime();
+
+	for (var i = 0; i < 1e7; i++) {
+		console.log('for loop');
+		if ((new Date().getTime() - start) > timeout){
+			console.log('break from for loop');
+			 break;
+		}
+
+		if(haveChosen)
+		{
+			$(document).unbind('keydown', keydownFunc);
+			break;
+		}else
+		{
+			;
+		}
+	}
+	
+	//状态回复 
+	haveChosen = false;
+}
+function sleep(milliseconds) {
+		  var start = new Date().getTime();
+		  for (var i = 0; i < 1e7; i++) {
+			if ((new Date().getTime() - start) > milliseconds){
+			  break;
+			}
+		  }
+}
+		

@@ -1,0 +1,76 @@
+<html>
+	<head>	
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	<meta charset="utf-8">
+	<title>扑通扑通| 心理学测试</title>
+		
+	<link rel="stylesheet" type="text/css" href="__PUBLIC__/Css/test.css">
+	<link rel="stylesheet" type="text/css" href="__PUBLIC__/Css/buttons.css">
+	<!--<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">-->
+  
+	<script type="text/javascript" src="__PUBLIC__/Js/jquery/jquery-3.1.0.min.js"></script>
+	
+	<script type="text/javascript" src="__PUBLIC__/Js/common/commonParams.js"></script>
+	<script type="text/javascript" src="__PUBLIC__/Js/index/params.js"></script>
+	
+	<script type="text/javascript" src="__PUBLIC__/Js/index/userTest.js"></script>
+	<script>
+		var id ="{:I('get.id')}";
+		
+		console.log(id);
+		
+		var paramUrl = "{:U(GROUP_NAME.'/Index/getParams')}";
+	</script>
+	
+</head>
+<body>
+	<div id="page"> 
+		<div id="content">
+			<div id="beforeTest">
+				<div id="introduce" >
+					<div id="detail">
+						<p>
+							下面有<span id="testNum"></span>轮测试。<br/>
+							<br>
+							每轮测试过程是：首先显示一个加号，接着闪烁显示多张图片，最后用户选择。
+							其中，加号的显示时长是<span id="prepareTime"></span>。出最长<span></span>毫秒。
+						</p>
+					</div>
+					
+					<div id="nextButton">
+						<a href="javascript:void(0)" class="button button-royal button-pill button-giant" id="nextStep">下一步</a>
+					</div>
+				</div>
+				
+				<div id="begin" style="display:none;">
+					<!--<a href="javascript:void(0)" id="start">start</a>-->
+					<a href="javascript:void(0)" class="button button-royal button-pill button-giant" id="start">开始测验</a>
+					<a href="javascript:void(0)" class="button button-royal button-pill button-giant" id="back">返回</a>
+					
+				</div>
+			</div>
+			
+			
+			<div id="inTest">
+				<div id="transfer" style="display:none;">
+					<img src="" alt="" id="theImg"/>
+				</div>
+				
+				<div id="choice" style="display:none;">
+					<!--
+					<a href="javascript:void(0)" id="yes">yes</a>
+					<a href="javascript:void(0)" id="no">no</a>
+					-->
+					<p>有心按F，无心按J</p>
+				</div>
+			</div>
+			
+			<div id="end" style="display:none;font-size:20px;">
+				<p>
+					测试已经结束，谢谢参与!
+				</p>
+			</div>
+		</div>
+	</div>
+</body>
+</html>

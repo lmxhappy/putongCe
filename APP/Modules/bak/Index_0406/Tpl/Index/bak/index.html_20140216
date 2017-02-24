@@ -1,0 +1,14 @@
+<include file="Common:header" />
+		<link type="text/css" href="__ROOT__/Public/Css/index.css" rel="stylesheet">
+		<link type="text/css" href="__ROOT__/Public/Css/style.css" rel="stylesheet">
+		<link type="text/css" href="__ROOT__/Public/Css/map.css" rel="stylesheet">
+		
+		<script src="__PUBLIC__/Js/map.js"></script>
+		
+<include file="Common:nav" />
+	<div id="cnt" style="overflow:hidden;">
+		<include file="Common:left" />
+		<div id="container"></div>
+	</div>
+	<include file="Common:baidu_share" />
+<include file="Common:footer" />

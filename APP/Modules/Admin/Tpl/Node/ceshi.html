@@ -1,0 +1,35 @@
+	<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="initial-scale=1.0, user-scalable=no" />
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>中国国家顶级域安全状态</title>
+<script type="text/javascript" src="__PUBLIC__/js/jquery.min.js"></script>
+<script src="__PUBLIC__/js/jquery-ui.min.js"></script>
+
+<link rel="stylesheet" href="__PUBLIC__/css/bootstrap.min.css" type="text/css" />
+<link rel="stylesheet" href="__PUBLIC__/css/css/smoothness/jquery.ui.css" type="text/css" />
+<link rel="stylesheet" href="__PUBLIC__/css/style-01.css" type="text/css" />
+</head>
+ <body>
+ <form action="{:u('editBasic')}" method='post'>
+<div id="dialog-form" style="color:red;"title="节点信息">
+	<p class="validateTips">请填写新节点信息</p>
+  <div id="login-info" style="color:red;display:none;"></div>
+  <div>
+        <label for="name">英文名<a>*</a></label>
+        <input type="text" name="name" id="name" class="text ui-widget-content ui-corner-all" />
+        <label for="cname">中文名<a>*</a></label>
+        <input type="text" name="cname" id="cname" value="" class="text ui-widget-content ui-corner-all" />
+        <label for="number">节点编号</label>
+        <input type="text" name="number" id="number" value="" class="text ui-widget-content ui-corner-all" />
+		<label for="ipaddr">IP地址<a>*</a></label>
+        <input type="text" name="ipaddr" id="ipaddr" value="" class="text ui-widget-content ui-corner-all" />
+        <!--<input type="submit" />-->
+        <button id="store">提交</button>
+  </div>
+</div>
+</form>
+
+ </body>
+ </html>

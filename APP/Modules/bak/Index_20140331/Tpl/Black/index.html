@@ -1,0 +1,50 @@
+<include file="Common:header" />
+	<link type="text/css" href="__PUBLIC__/Css/monitor.css" rel="stylesheet">
+	<script type="text/javascript" src="__PUBLIC__/Js/FusionCharts.js"></script>
+	
+	    <title>黑名单</title>
+    <link href="__PUBLIC__/Css/blacklist.css" rel="stylesheet" type="text/css">
+
+	<script src="__PUBLIC__/Js/jquery.dataTables.min.js"></script>
+	<style type="text/css" title="currentStyle">
+		@import "__PUBLIC__/Css/jquery.dataTables.css";
+		@import "__PUBLIC__/Css/demo_table.css";
+	</style>
+	<script>
+		var ajax_url =  "{:U(GROUP_NAME.'/Index/Black/getBlacklist')}";
+	</script>
+	<script src="__PUBLIC__/Js/black.js"></script>
+
+<include file="Common:nav" />
+	<center>
+		<div id="blackdata">
+				<table id="blacklist" class="display dataTable">
+					<thead> 
+					<tr>
+						<th class="sorting_asc">地址</th>
+						<th>节点</th>
+						<th>查询量</th>
+						<th>时间</th>
+					</tr>
+					</thead> 
+					<tbody> 
+					</tbody>
+				</table>
+		</div>
+	</center>
+	
+	<script>
+		$("#search").click(function(){
+			$('#blacklist').dataTable(
+			{
+				"sAjaxSource": ajax_url, 
+				bSort: true,
+				"fnServerParams": function ( aoData ) {
+					aoData.push( { "name": "more_data", "value": "my_value" } );
+				}
+			});
+		});
+	</script>
+		
+	
+	<include file="Common:footer" />

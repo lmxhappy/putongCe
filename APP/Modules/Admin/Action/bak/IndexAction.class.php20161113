@@ -1,0 +1,217 @@
+<?php
+
+
+class IndexAction extends Action {
+	public function index()
+	{
+			
+		if(!isset($_SESSION['uid'])){
+			redirect('/Admin/Login/index');
+		}
+		
+		//var_dump($_SESSION);die();
+		$this->userList = $this->getUserList();
+		/*
+		p('-------------');
+		p($this->userList);die;
+		*/
+		
+		$this->display();
+	}
+
+	public function getUser()
+	{
+			
+		if(!isset($_SESSION['uid'])){
+			redirect('/Admin/Login/index');
+		}
+		
+		//var_dump($_SESSION);die();
+		$this->userList = $this->getUserList();
+		/*	
+		p('-------------');
+		p($this->userList);die;
+		*/
+		
+		$this->display();
+	}
+	
+	public function getResult()
+	{		
+		$urlId = I('urlId');
+		if(!$urlId)
+		{
+			p('urlId is nil');
+			return;
+		}
+
+		$res = M('test')->where(array('urlId'=>$urlId))->select();
+		/*p($res);//die;
+		$sql = M('test')->getLastSql();
+		p($sql);
+		die;
+		*/
+
+		//var_dump($_SESSION);die();
+		//$this->resultList = $this->getLatestResult($urlId);
+		$this->resultList = $this->getResultList($urlId);
+		/*
+		p('-------------');
+		p($this->resultList);die;
+		*/
+
+		$this->display("result");
+	}
+
+	/**获得结果列表*/
+	function getLatestResult($urlId)
+	{
+		if(!$urlId)
+		{
+			p('urlId is nil');
+			return;
+		}
+		$model = M();
+		//$sentence = "select a.username, b.id from tb_subjects a, tb_links b where a.username=b.userName";
+		$sentence = "select * from tb_test where clientId=(select max(clientId) from tb_test where urlId=".$urlId.")";
+		//p($sentence);
+		$result = $model->query($sentence);
+		//p($result);die;
+		return $result;
+	}
+
+	/**获得结果列表*/
+	function getResultbyClient()
+	{
+		$urlId = I('urlId');
+		$clientId = I('clientId');
+		/*
+		p($urlId);
+		p($clientId);
+		*/
+		if(!$urlId || !$clientId)
+		{
+			p('urlId or clientId is nil');
+			return;
+		}
+
+		$model = M();
+		//$sentence = "select a.username, b.id from tb_subjects a, tb_links b where a.username=b.userName";
+		$sentence = "select * from tb_test where clientId='".$clientId."' and urlId='".$urlId."'";
+		//p($sentence);
+		$result = $model->query($sentence);
+		//p($result);die;
+		echo json_encode($result);
+		//return $result;
+	}
+
+
+	/**获得一个urlId下的所有测试的列表*/
+	public function getResultList($urlId)
+	{//p('hee');		
+		//$urlId = I('urlId');
+		if(!$urlId)
+		{
+			p('urlId is nil');
+			return;
+		}
+
+		$sentence = "select clientId,create_time, urlId from tb_test where urlId='".$urlId."' group by clientId";//->where(array('urlId'=>$urlId))->select();
+		//p($sentence);
+		$model = M();
+		$result = $model->query($sentence);
+		//p($result);die;
+		/*
+	//p($res);//die;
+		$sql = M('test')->getLastSql();
+		p($sql);
+		die;
+		*/
+	
+		return $result;
+
+		//var_dump($_SESSION);die();
+		/*p('-------------');
+		p($this->userList);die;*/
+		
+	}
+	
+	function getUserList()
+	{
+		/*
+		$fields = array('userName', 'id');
+		//$links = M('link')->distinct(true)->field($fields)->select();
+		$links = M('subjects')->group('username')->field($fields)->select();
+		//p($links);die;
+		$this->userList = $links;
+		$records = D('SubjectlinkView')->getAll();
+		p($records);die;*/
+		
+		$model = M();
+		
+		//$sentence = "select a.username, b.id from tb_subjects a, tb_links b where a.username=b.userName";
+		$sentence = "select a.username, b.id as urlId from tb_subjects a left join tb_links b on a.id=b.userId";
+		//$sentence = "select a.username, b.id as urlId, b.userId as userId from tb_subjects a left join tb_links b on a.id=b.userId;";
+		//$sentence = "select tb_new.username,tb_new.urlId, tb_new.userId, count(*) as testCount from (select a.username, b.id as urlId, b.userId as userId from tb_subjects a left join tb_links b on a.id=b.userId) tb_new, tb_test where tb_new.urlId=tb_test.userId group by urlId;
+		//$sentence = "select tb_new.username, tb_new.urlId, tb_new.userId, count(*) as count from (select a.username, b.id as urlId, b.userId as userId from tb_subjects a left join tb_links b on a.id=b.userId) tb_new left join tb_test  on tb_new.urlId=tb_test.userId group by tb_new.urlId";
+		//p($sentence);
+		
+		$result = $model->query($sentence);
+		/*
+		p($result);
+		die;
+		*/
+		//p(M('links')->getLastSql());
+
+		
+		foreach($result as $k=>&$v)
+		{
+			/*p('--------------');
+			p($v);
+			*/
+			$urlId = $v['urlId'];
+			$ret = M('test')->where(array('urlId'=>$urlId))->find();
+			/*
+			p($urlId);
+			p($ret);
+			*/
+			//p(M('test')->getLastSql());
+			if($ret)
+			{
+				$v['did']= true;
+			}
+			else
+			{
+				$v['did']= false;
+			}
+		}
+		
+		//p($result);
+		return $result;
+		//p(M('link')->getLastSql());
+		//p($this->userList);
+	}
+	
+	function createNewUser()
+	{
+		$post = $_POST;
+		$ret = M('subjects')->add($post);
+
+		if(!$ret)
+		{
+			$username = I('username');
+			$ret = M('subjects')->where(array('username'=>$username))->save($post);
+			
+			
+			/*p($ret);
+			
+			$sql = M('subjects')->getLastSql();
+			p($sql);
+			*/
+		}
+		
+		echo $ret;
+	}
+}
+
+?>

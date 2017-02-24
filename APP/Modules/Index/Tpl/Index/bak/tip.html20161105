@@ -1,0 +1,68 @@
+<html>
+	<head>	
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	<meta charset="utf-8">
+	<title>心理学测试</title>
+		
+	<link rel="stylesheet" type="text/css" href="__PUBLIC__/Css/test.css">
+	<link rel="stylesheet" type="text/css" href="__PUBLIC__/Css/buttons.css">
+	<!--<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">-->
+  	<link rel="stylesheet" href="http://cdn.static.runoob.com/libs/bootstrap/3.3.7/css/bootstrap.min.css">  
+	
+	
+	<script src="http://cdn.static.runoob.com/libs/jquery/2.1.1/jquery.min.js"></script>
+	<script src="http://cdn.static.runoob.com/libs/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+	
+	
+		<script src="/Public/Js/jquery-validation-1.15.0/dist/jquery.validate.min.js"></script>
+	<script src="/Public/Js/jquery-validation-1.15.0/dist/additional-methods.min.js"></script>
+	
+	<script>
+		var testurl = "{:U('@ce.51putong.com')}";
+	</script>
+	
+	<script type="text/javascript" src="__PUBLIC__/Js/index.form.valid.js"></script>
+
+	
+</head>
+<body>
+	<div id="page"> 
+		<div id="content">
+				<div id="beforeTest">
+					<div id="introduce" >
+						<div id="detail">
+							<p>
+								您使用的url有点问题，请提供以下信息。
+							</p>
+						</div>
+					
+
+					</div>		
+				</div>
+				
+				<div style="padding: 100px 100px 10px;" class="col-xs-6">
+					<form class="bs-example bs-example-form" role="form" id="urlform" >
+						<div  class="input-group">
+							<input name="url" class="form-control input-lg" type="text" placeholder="新生成的url在此显示！" readonly>
+						</div>
+						<br>
+						
+						<div class="input-group">
+							<span class="input-group-addon">姓名：</span>
+							<input type="text" class="form-control" placeholder="" name="username">
+						</div>
+						<br>
+						
+						<div class="input-group" id="info">
+							<span></span>
+						</div>
+						<br>
+						
+						<button type="submit" class="btn btn-primary">生成测试页面URL</button>
+						<a id="jump" href="" class="btn btn-info" role="button" style="display:none;">去往心理学测试页面</a>
+					</form>
+				</div>
+		</div>
+	</div>
+</body>
+</html>

@@ -1,0 +1,80 @@
+	<include file="Common:header" />
+	
+	<meta http-equiv="Expires" content="0">
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>时间轴</title>
+	 <link href="__PUBLIC__/Css/timeline.css" rel="stylesheet" type="text/css">
+	<script src="http://code.jquery.com/jquery-1.10.2.min.js"></script>
+	<script src="http://code.jquery.com/ui/1.10.3/jquery-ui.js"></script>
+	<script type="text/javascript" src="__PUBLIC__/Js/FusionCharts.js"></script>
+	<script type="text/javascript" src="__PUBLIC__/Js/timeline.js"></script>
+	<script>
+		var flash_url = "__PUBLIC__/Js/Charts/MSLine.swf";
+		var ajax_url = "{:U(GOURP_NAME.'/Index/Timeline/getXmlData')}";
+	</script>
+
+	<script type="text/javascript">
+		$(document).ready(function(){
+			showTimelineCharts("QPS", "{$xml}", "timeline");
+		});
+
+	</script>
+	
+	<script>
+		$(document).ready(function(){
+			$("input[name=all]").click(function(){
+				var inputs = $(this).parents('label').siblings().find('input');
+				//alert(inputs);
+				//$(this).prop('checked')?alert('选中'):alert('未选中');
+				//$(this).prop('checked')?inputs.attr('checked', 'checked'): inputs.removeAttr('checked');
+				$(this).prop('checked')?inputs.prop("checked",true): inputs.prop('checked', false);
+			
+			});
+			
+			$('input[level=2]').click(function(){
+				var inputs = $(this).parents('dl').find('input');
+				//alert(inputs);
+				//$(this).prop('checked')?alert('选中'):alert('未选中');
+				$(this).prop('checked')?inputs.attr('checked', 'checked'): inputs.removeAttr('checked');
+			});
+		
+		
+		});
+	</script>
+	<include file="Common:nav" />
+
+	<center>
+		<div id="select_menu">
+			<div style="float:left;">
+				<a>选择节点</a>
+			</div>
+	
+			<div style="float:left;" ui-button ui-widget ui-state-default ui-corner-all>
+				<form>
+					<label><input name="all" type="checkbox" value="0" />全选</label> 
+
+					<foreach name="node_info" item="v">
+						<label><input name="{$v}" type="checkbox" value="{$key}" <if condition="$key eq $_GET['id']">checked="checked"</if> />{$v}</label> 
+			
+					</foreach>
+				</form>
+				<button  value="获取图表" style="width:100px；height:50px" >获取图表</button>
+			</div>
+			<div id="temp"></div>
+		</div>
+		
+					
+		<div id="tip_info">
+			<span>
+				<a id="error_info"></a>
+			</span>
+		</div>
+		<div id="line">
+			<div id="timeline" ></div>
+			<div id="timeline2" ></div>
+
+		</div>
+		
+	</center>
+
+	<include file="Common:footer" />

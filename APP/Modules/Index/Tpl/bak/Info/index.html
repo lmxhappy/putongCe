@@ -1,0 +1,103 @@
+﻿<include file="Common:header" />
+	<link type="text/css" href="__PUBLIC__/Css/monitor.css" rel="stylesheet">
+	
+	    <title>黑名单</title>
+
+	<script src="__PUBLIC__/Js/info.js"></script>
+	<link href="__PUBLIC__/Css/info.css" rel="stylesheet" type="text/css">
+	<script>
+		var ajax_url =  "{:U(GROUP_NAME.'/Index/Info/getInfo')}";
+		//var client_status =eval('(' + '{"1":0,"2":0,"3":0,"4":0,"5":0,"6":0}' + ')');
+        	
+	</script>
+	
+<include file="Common:nav" />
+	<center>
+
+		<div id="search">
+				<div id="txt">
+					<input type="text" id="target" name="target" />				
+				</div>
+				<div id="btn">
+					<input type="submit" value="信息搜索" class="no_bg" />
+				</div>
+		</div>
+		
+		<div id="loading" align="center" style="top: 60px; height: 30px; display: none;">
+	           <span style="font-size:14px;">正在查询检测中</span><img id="ldimg" style="position:relative;top:4px;" src="__PUBLIC__/Images/loader2.gif">
+	    </div>
+		
+		<div id="shareinfo" style="width: 1165px; padding: 0px 33px 37px 0px; position: relative;">
+	                <p style="width:auto; text-align:left; top:10px;left:0; position:absolute;">
+	                    <span style="padding-right:10px;" id="check_host">检测目标：<a href="http://cnnic.cn" target="_blank">cnnic.cn</a>&nbsp;&nbsp;&nbsp;&nbsp;</span>
+	                </p>
+	                <p style="width:252px;; text-align:right; top:10px; left:925px; position:absolute;">
+	                    <span id="check_time">检测时间：2014-04-11 08:41:49</span>
+	                </p>
+	    </div>
+		
+		<div id="result" align="center">
+			<table id="ipinfo" class="mytable" cellspacing="0" style="width:1200px;" id="tblSort">
+				<thead style="background:#CDE4F2;"> 
+					<tr style="background:#CDE4F2;">
+						<th width="20%">检查项</th>
+						<th width="80%">结果</th>
+					</tr>
+					</thead>
+					
+				<tbody id="mytbody" style="display:none"> 
+					<tr class="alt">
+						<td>地理定位</td>
+						<td id="geo">
+							<a rel="tooltip" data-placement="right" data-original-title="" class="hint_ex">
+								<img src="__PUBLIC__/Images/ld.gif" align="center">
+							</a>
+						</td>
+					</tr>
+					<tr>
+						<td>traceroute</td>
+						<td id="trace">
+							<a rel="tooltip" data-placement="right" data-original-title="" class="hint_ex">
+								<img src="__PUBLIC__/Images/ld.gif" align="center">
+							</a>
+						</td>
+					</tr>
+					<tr>
+						<td>ping</td>
+						<td id="ping">
+							<a rel="tooltip" data-placement="right" data-original-title="" class="hint_ex">
+								<img src="__PUBLIC__/Images/ld.gif" align="center">
+							</a>
+						</td>
+					</tr>
+					<tr>
+						<td>反向域</td>
+						<td id="reverse">	
+							<a rel="tooltip" data-placement="right" data-original-title="" class="hint_ex">
+								<img src="__PUBLIC__/Images/ld.gif" align="center">
+							</a>
+						</td>
+					</tr>
+					<tr>
+						<td>ipwhois</td>
+						<td id="ipwhois">	
+							<a rel="tooltip" data-placement="right" data-original-title="" class="hint_ex">
+								<img src="__PUBLIC__/Images/ld.gif" align="center">
+							</a>
+						</td>
+					</tr>
+					<tr>
+						<td>端口探测</td>
+						<td id="portdect">	
+							<a rel="tooltip" data-placement="right" data-original-title="" class="hint_ex">
+								<img src="__PUBLIC__/Images/ld.gif" align="center">
+							</a>
+						</td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+	
+	</center>
+	
+	<include file="Common:footer" />

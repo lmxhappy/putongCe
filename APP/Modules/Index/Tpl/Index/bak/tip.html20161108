@@ -1,0 +1,49 @@
+<include file="header" />
+</head>
+<body>
+	<div id="page"> 
+		<div id="content">
+				<div id="beforeTest">
+					<div id="introduce" >
+						<div id="detail">
+							<p>
+								您使用的url有点问题，请提供以下信息，其中任一一个信息即可。
+							</p>
+						</div>
+					
+
+					</div>		
+				</div>
+				
+				<div style="padding: 100px 100px 10px;" class="col-xs-6">
+					<form class="bs-example bs-example-form" role="form" id="urlform" >
+						<div  class="input-group" >
+							<input name="url" class="form-control input-lg" type="text" placeholder="新生成的url在此显示！" readonly>
+						</div>
+						<br>
+						
+						<div class="input-group">
+							<span class="input-group-addon">姓名：</span>
+							<input type="text" class="form-control" placeholder="" name="username">
+						</div>
+						<br>
+						
+						<div class="input-group">
+							<span class="input-group-addon">邀请码：</span>
+							<input type="text" class="form-control" placeholder="" name="userId">
+						</div>
+						<br>
+						
+						<div class="input-group" id="info">
+							<span></span>
+						</div>
+						<br>
+						
+						<button type="submit" class="btn btn-primary">生成测试页面URL</button>
+						<a id="jump" href="" class="btn btn-info" role="button" style="display:none;">去往心理学测试页面</a>
+					</form>
+				</div>
+		</div>
+	</div>
+</body>
+</html>

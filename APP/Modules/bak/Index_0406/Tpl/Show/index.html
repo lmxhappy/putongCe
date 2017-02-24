@@ -1,0 +1,129 @@
+<include file="Common:header" />
+	<link type="text/css" href="__PUBLIC__/Css/monitor.css" rel="stylesheet">
+	<link href="__PUBLIC__/Css/jquery-ui-timepicker-addon.css" rel="stylesheet" type="text/css">
+	<link href="/dnsla/Public/Css/jquery-ui.css" rel="stylesheet" type="text/css">
+
+	<script type="text/javascript" src="__PUBLIC__/Js/FusionCharts.js"></script>
+	<script type="text/javascript" src="__PUBLIC__/Js/jquery-ui-timepicker-addon.js"></script>
+
+		
+	<js href="__PUBLIC__/Js/show.js" />
+	<script>
+		var datepicker_image_url = "__PUBLIC__/Images/calendar.gif";
+		//var reload_url = "__SELF__";
+		var reload_url2 = "{:U('/'.$id)}";
+		
+		var ajax_url = "{:U(GROUP_NAME.'/Index/Show/get')}";
+		var lastest_time = "{$info.create_time}";
+		var id = {$id};
+		var synctime_url = "{:U(GROUP_NAME.'/Index/Show/getUpdateTime')}";
+	</script>
+	<script type="text/javascript" src="__PUBLIC__/Js/synctime.js"></script>
+<include file="Common:nav" />
+
+	<div id="main">
+		<div id="info">
+		   <div id="node_info">
+				<d1 class= "clearfix">
+					<div id="infos">
+							<p>节点：<a id="nodeid" >{$info.cname}<if condition="$info['cname']">({$info.name}, {$info.addr})</if></a></p>
+							<p >QPS:<a>{$info.rate}</a></p>
+							<p>更新时间：<a id ="photo_time">{$info.create_time}</a></p>
+							<p>最新更新时间：<a id="info_update_time"></a></p>
+							<p>					
+								<label>选择时间：</label>
+									<input type="text" id="date" name="date">
+									<input type="text" id="time" name="time" >
+							</p>
+							<p><a><input type="button" value="刷新页面" onclick="reloadPage()" /></a></p>
+						</div>
+					</d1>
+		   </div>
+		   <div id="select_menu">
+				<div id = "select_nodes">
+					<div id="hotnodes">
+						<div id="hotname">
+							<a class="area">热点节点：</a>
+						</div>
+						<div id="hotninfo">
+							<dl class="clearfix">
+								<dd>					
+									<span id="tags">
+										<foreach name="hotnodes" item="v">
+											<a href="{:U('/'.$v['id'])}" title="{$v.cname}" looyu_bound="1" <if condition="$v['id'] eq $_GET['id']">style="font-size:20px;font-weight:bold;color:red;"</if> >{$v.cname}</a>
+										</foreach>
+									</span>
+								</dd>
+							</dl>
+						</div>
+					</div>
+					<div id="nodes">
+						<div id="nname">
+							<a class="area">节点：</a>
+						</div>
+						<div id="ninfo">
+							<dl class="clearfix">
+							
+								<dd>					
+									<span id="tags">
+										<foreach name="node_info" item="v">
+											<a href="{:U('/'.$key)}" title="{$v}" looyu_bound="1" <if condition="$key eq $_GET['id']">style="font-size:20px;font-weight:bold;color:red;"</if> >{$v}</a>
+										</foreach>
+									</span>
+								</dd>
+								<div class="clear"></div>
+							</dl>
+						</div>
+					</div>
+				</div>
+
+			</div>
+			
+		</div>
+				<div id="tip_info">
+				<span>
+					<a id="error_info"></a>
+				</span>
+			</div>
+		
+      <table width="1201" border="1">
+		<thead></thead>
+		<tbody>
+          <tr>
+            <td width="600" height="480"><div id="dnamechart" align="left" title="域名"></div></td>
+            <td width="600" height="480"><div id="addrchart" align="right" title="IP地址"></div></td>
+          </tr>
+          <tr>
+            <td width="600" height="480"><div id="rel_addrchart" align="right" title="访问量最大的域名({$largest.dname})的来源IP地址"></div></td>
+			<td width="600" height="480"><div id="rel_dnamechart" align="left" title="访问量最大的IP网段({$largest.addr})访问的域名"></div></td>
+          </tr>
+          <tr>
+			 <td width="600" height="480"><div id="small_dnamechart" align="left" title="访问量最大的域名({$largest.dname})的子域名"></div></td>
+			 <td width="600" height="480"><div id="small_addrchart" align="left" title="访问量最大的IP网段({$largest.addr})的IP地址"></div></td>
+          </tr>
+		  <tr>
+            <td width="600" height="480"><div id="ports" align="left" title="访问量最大的IP网段({$largest.addr})的端口使用情况"></div></td>
+			<td width="600" height="480"><div id="placeholder" align="left"></div></td>
+          </tr>
+		</tbody>
+      </table>
+        
+    </div>
+		
+	<foreach name="info.data" item="v">
+		<script>	
+			var key = "{$key}";
+			
+			var title = $("#{$key}").attr('title');	
+			
+			var data = "<chart caption='"+title+"'  baseFontSize='15' bgColor='FFFFFF,FF5904' canvasBgAlpha='100,40' bgAlpha='90' showBorder='0'>"+ "{$v}";
+			
+			if(key == 'dnamechart')
+				showChart('__PUBLIC__/Js/Charts/Bar2D.swf', title, key,data);
+			else
+				showChart('__PUBLIC__/Js/Charts/Pie2D.swf', title, key,data);
+		</script>
+	</foreach>
+		
+	
+	<include file="Common:footer" />

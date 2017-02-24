@@ -1,0 +1,54 @@
+<html>
+<base target="iframe" />
+<head>
+	<title>添加类别</title>
+		<link type="text/css" href="__PUBLIC__/css/public.css" rel="stylesheet">
+	<script type="text/javascript" src="http://code.jquery.com/jquery-1.10.2.min.js" ></script>
+	
+	<script type="text/javascript" >
+		var verifyURL= '{:U("Admin/Login/verify", '', '')}';
+	</script>
+	<script type="text/javascript" src="__PUBLIC__/js/login.js"></script>
+</head>
+<body>
+	<form action="{:U(GROUP_NAME.'/Category/runAddCate')}" method="post">
+		<table class="table">
+			<tr>
+				<th colspan="2">添加栏目分类</th>
+			</tr>
+			<tr>
+				<td align="right">分类栏目名称:</td>
+				<td >
+					<input type="text" name = "name" />
+				</td>
+			</tr>
+			<tr>
+				<td align="right">分类栏目模块名称:</td>
+				<td >
+					<input type="text" name = "module" />
+				</td>
+			</tr>
+			<tr>
+				<td align="right">url前缀：</td>
+				<td >
+					<input type="text" name = "prefix" />
+				</td>
+			</tr>
+			
+			<tr>
+				<td align="right">排序：</td>
+				<td >
+					<input type="text" name = "sort" value="100"/>
+				</td>
+			</tr>
+
+			<tr>
+				<td colspan="2" align="center">
+					<input type="hidden" name="pid" value="{$pid}" />
+					<input type="submit" value="保存设置"/>
+				</td>
+			</tr>
+		</table>
+	</form>
+</body>
+</html>

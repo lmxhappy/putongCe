@@ -1,0 +1,128 @@
+  <div id="user"  class="active" style="display:block;overflow: auto;">
+			<div style="padding: 100px 100px 10px;overflow: auto;height:100%;width:100%;" class="col-xs-6">
+				
+					
+				<!--<table id="subjects" class="table .table-hover" data-toggle="table">
+				-->
+				<table id="subjects" class="table .table-hover" >
+					  <caption>用户列表</caption>
+					  <thead>
+						<tr>
+							<th>序号</th>
+							<th>姓名</th>
+							<th>个人信息</th>
+							<th>参加的实验</th>
+						</tr>
+					  </thead>
+					  <tbody >
+						<foreach name="userList" item="vo" key="k">
+						<tr data-target="#demo{$k}" data-toggle="collapse"  class="accordion-toggle">
+							<td>{$kk}</td>
+							<td>{$vo.username}</td>
+							<td><a href="javascript:void(0);">查看</a></td>
+							<if condition="$vo.testList neq null">
+								<td>{$vo.testList}</td>
+							<else />
+								<td>-</td>
+							</if>
+								
+						</tr>
+						<tr >
+            						<td colspan="6" class="hiddenRow">
+								<div class="accordian-body collapse" id="demo{$k}"> 
+            								<span>性别：</span>
+								<if condition="$vo.sex eq 1">
+            								<span>男</span><br>
+								<else />
+									<span>女</span><br>
+								</if>
+								<span>年龄：{$vo.age}</span><br>
+								<span>出生日期：{$vo.birth}</span><br>
+								<span>邮箱：{$vo.email}</span><br>
+								<span><i class= icon-phone"></i>电话：{$vo.phone}</span><br> 
+								<span>其它：{$vo.desc}</span><br>
+								<span>参加的实验：
+									<if condition="$vo.testList neq null">
+										<table id="" class="table .table-hover" >
+											<thead>
+												<tr>
+													<th>序号</th>
+													<th>实验名字</th>
+													<th>是否生成新测验？</th>
+													<th>测验情况</th>
+													<th>测验链接</th>
+												</tr>
+											 </thead>
+											<foreach name="vo.testList" item="vv" key="kk">
+											<tr>
+												<td>{$kk}</td>
+												<td>{$vv}</td>
+												<td style="cursor:pointer;">
+																					<a href="javascript:void(0);" name="newTestUrl" class="newTest" userName="{$vo.username}">新测验</a>
+												</td>
+												<if condition="$vo.urlId neq null">
+													<td style="cursor:pointer;">
+																					<if condition="$vo.did neq null">
+																						<a href="{:U(GROUP_NAME.'/Admin/Index/getResult', array('urlId'=>$vo['urlId']))}">查看结果</a>									
+																					<else />
+																						<a>未完成</a>
+																					</if>
+													</td>
+																				<td style="cursor:pointer;">
+																					<a href="{:U('/s_'.$vo['urlId'])}">{:U('/s_'.$vo['urlId'])}</a>
+																				</td>
+																			<else />
+																				<td style="cursor:pointer;">
+																					<a>-</a>
+																				</td>
+																				<td style="cursor:pointer;">
+																					<a href="javascript:void(0);">-</a>
+																				</td>
+												</if>
+											</tr>
+											</foreach>
+										</table>
+									<else />-</if></span><br>
+							</td>
+        				</tr>
+						</foreach>
+					  </tbody>
+				</table>
+			</div>
+	</div>
+	
+	<script>
+		$(function(){
+	//		$(".toNewTestUrl").click(function(){
+	//			alert();
+	
+$('#subjects').bootstrapTable({
+	striped: true,	 //使表格带有条纹
+	pagination: true,	//在表格底部显示分页工具栏
+	pageSize: 22,
+	pageNumber: 1,
+	pageList: [10, 20, 50, 100, 200, 500],
+	idField: "ProductId",  //标识哪个字段为id主键
+	showToggle: false,   //名片格式
+	cardView: false,//设置为True时显示名片（card）布局
+	showColumns: true, //显示隐藏列  
+	showRefresh: true,  //显示刷新按钮
+	singleSelect: true,//复选框只能选择一条记录
+	search: true,//是否显示右上角的搜索框
+	clickToSelect: true,//点击行即可选中单选/复选框
+	sidePagination: "server",//表格分页的位置
+	queryParamsType: "limit", //参数格式,发送标准的RESTFul类型的参数请求
+	toolbar: "#toolbar", //设置工具栏的Id或者class
+	silent: true,  //刷新事件必须设置
+	formatLoadingMessage: function () {
+		return "请稍等，正在加载中...";
+	},
+	formatNoMatches: function () {  //没有匹配的结果
+		return '无符合条件的记录';
+	},
+	onLoadError: function (data) {
+		$('#reportTable').bootstrapTable('removeAll');
+	},
+});	
+			});
+	</script>

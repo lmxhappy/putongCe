@@ -1,0 +1,37 @@
+<?php
+/*
+首页
+*/
+class IndexAction extends Action {
+	public function index()
+	{
+		//$this->cate = M('cate')->order('sort')->select();
+		//p($cate);
+		$cate = M('cate')->where(array('pid'=>0))->order('sort')->select();
+		$data =array();
+		$item = array();
+		
+		foreach ($cate as $v)
+		{
+			if($v['pid'] == 0)
+			{
+				$id = $v['id'];
+				$blog = M('blog')->where(array('cid'=>$id, 'del'=>0))->limit(2)->select();
+				//p($blog);
+				$item['name'] = $v['name'];
+				foreach($blog as $b)
+				{
+					$item['title'][] = $b['title'];
+				}
+				 
+			}
+			$data[] = $item;
+			unset($item);
+		}
+		$this->content = $data;
+		//p($data);
+		$this->cate = $cate;
+		$this->display();
+	}
+}
+?>

@@ -1,0 +1,64 @@
+		/*$(function(){
+			$("#start").click(function(interval){
+				$('#start').hide();
+				//$('#plus').show();
+				//sleep(1000);
+				
+				//interval=66;
+				interval=660;
+				$('#random').show();
+				setInterval(function(){
+					if($("#random1").is(":hidden")){
+						$("#random2").hide(0,function(){$("#random1").show();});
+					}else{
+						$("#random1").hide(0,function(){$("#random2").show();});	
+					}
+				},interval);
+				
+				interval2 = interval*8
+				setInterval(function(){
+					if($("#random").is(":hidden")){
+						$("#target").hide(0,function(){$("#random").show();});
+					}else{
+						$("#random").hide(0,function(){$("#target").show();});	
+					}
+				},interval2);
+				
+				
+				setInterval(function(){
+					if($("#target1").is(":hidden")){
+						$("#target2").hide(0,function(){$("#target1").show();});
+					}else{
+						$("#target1").hide(0,function(){$("#target2").show();});	
+					}
+				},interval);
+			});
+		});*/
+		
+		function sleep(milliseconds) {
+		  var start = new Date().getTime();
+		  for (var i = 0; i < 1e7; i++) {
+			if ((new Date().getTime() - start) > milliseconds){
+			  break;
+			}
+		  }
+		}
+			$(function(){
+				$("#start").click(function(){
+					$('#start').hide();
+					var arr=[0, 1, 2, 3, 0, 1];
+					for(var i in arr)
+					{
+						var item = arr[i];
+						console.log(item);
+						
+						var pic = item+".bmp";
+						console.log(pic);
+						
+						var uri = "Images/"+pic;
+						console.log(uri);
+						$("#stage").attr("src", uri);
+						sleep(660);
+					}
+				});
+			});

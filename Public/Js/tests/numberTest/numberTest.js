@@ -19,4 +19,14 @@
 			console.log(choice);
 			
 		}); 
+		
+		function endUp()
+		{
+			console.log("三分钟已经过去了");
+		}
+		
+		var choiceWindowTime = 3 * 60 * 1000;
+			//判断时间开启
+		wait(choiceWindowTime)
+			.done(endUp);
 	});

@@ -16,7 +16,7 @@
 	});
 	
 	//继续
-	$("#continueTo").click(function(){
+	$('#continueTo').click(function(){
 		console.log("continue is click");
 		continueAction();
 	});

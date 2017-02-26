@@ -20,6 +20,7 @@ function tests()
 /**真的开始试验了*/
 function continueAction()
 {
+	console.log("in continueAction");
 		$("#target").hide();
 
 		curSec();

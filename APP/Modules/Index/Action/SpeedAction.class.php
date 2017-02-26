@@ -29,7 +29,7 @@ class SpeedAction extends Action {
 		
 		$result = $this->storeTargetNum($id, $this->targetNum);
 		p("$result"+$result);
-		if(!result);
+		if(!result)
 		{
 			p("no target");
 		}else

@@ -38,6 +38,7 @@ class SpeedAction extends Action {
 		$where = array('id'=>$tableId);
 		$data['target'] = $targetNum; 
 		$ret = M("numbertest")->where($where)->save($data);
+		p("ret:".$ret);
 		if($ret == false)
 			return false;
 			

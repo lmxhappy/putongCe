@@ -8,15 +8,39 @@
 class SpeedAction extends Action {
 	public function index()
 	{
-		$this->numbers = $this->createMatrix();
+		$ret = $this->createData();
 		
-		$ret = $this->storeMatrix($this->numbers);
 		if($ret == -1)
 			$this->error("产生数字错误，请联系管理员！");
 		else
 			$this->display();
 	}
 	
+	/***/
+	private createData()
+	{
+		$this->numbers = $this->createMatrix();
+		$ret = $this->storeMatrix($this->numbers);
+		
+		$this->targetNum = $this->createTargetNum();
+		$id = $ret;
+		if(!$this->storeTargetNum($id, $this->targetNum));
+		{
+			p("no target");
+		}
+		return $ret;
+	}
+	
+	public function storeTargetNum($tableId, $targetNum)
+	{
+		$where = array('id'=>$tableId);
+		$data['target'] = $targetNum; 
+		$ret = M("numbertest")->where($where)->save($data);
+		if($ret == false)
+			return false;
+			
+		return true;
+	}
 	/**生成一个target的目标数字*/
 	public function createTargetNum()
 	{

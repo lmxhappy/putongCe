@@ -14,14 +14,22 @@ function endUp()
 function tests()
 {
 	curSec();
-	
-	$("#numbers").show();
-	
-	//判断时间timer开启
+	$("#target").show();
+}
+
+/**真的开始试验了*/
+function continueAction()
+{
+		$("#target").hide();
+
+		curSec();
+
+		$("#numbers").show();
+		
+		//判断时间timer开启
 		wait(choiceWindowTime)
-			.done(endUp);
-			
-	
+				.done(endUp);
+				
 }
 	
 $(function(){

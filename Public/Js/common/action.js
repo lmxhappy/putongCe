@@ -15,6 +15,11 @@
 		tests();
 	});
 	
+	//继续
+	$("#continue").click(function(){
+		$("#target").hide();
+		continueAction();
+	});
 	//返回
 	$("#back").click(function(){
 		$('#introduce').show();

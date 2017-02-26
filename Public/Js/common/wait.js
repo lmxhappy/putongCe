@@ -24,3 +24,25 @@ function sleep(milliseconds) {
 			}
 		  }
 }
+
+
+
+/***等待用户作出选择。当演示完毕之后，就需要用户按键选择是否有心形出现过。
+*用户可能并没有选择。*/
+function waitForUserChoice(choiceWindowTime)
+{
+//	$('#transfer').hide();
+//	$('#choice').show();
+			
+	//清除定时器，暂停执行下一轮
+//	clearInterval(timer);    
+			
+
+	//waitForChoice(3000);
+	choiceWindowStartTime = new Date().getTime();
+	console.log('choiceWindowStartTime:'+choiceWindowStartTime);
+			
+	//判断时间开启
+	wait(choiceWindowTime)
+		.done(endUp);
+}

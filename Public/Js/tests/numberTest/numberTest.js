@@ -6,25 +6,22 @@ function endUp()
 	console.log("三分钟已经过去了");
 	$("#numbers").hide();
 	$("#end").show();
+	
+	curSec();
 }
 
 /**测试时间倒计时**/
 function tests()
 {
-	var startTime = new Date().getMilliseconds;
+	curSec();
+	
 	$("#numbers").show();
 	
 	//判断时间timer开启
 		wait(choiceWindowTime)
 			.done(endUp);
 			
-	var endTime = new Date().getMilliseconds;
 	
-	var timeLen = endTime - startTime;
-	
-	console.log(timeLen);
-	console.log(startTime);
-	console.log(endTime);
 }
 	
 $(function(){

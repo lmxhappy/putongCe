@@ -9,6 +9,8 @@ function endUp()
 /**测试时间倒计时**/
 function tests()
 {
+	$("#numbers").show();
+	
 	//判断时间timer开启
 		wait(choiceWindowTime)
 			.done(endUp);

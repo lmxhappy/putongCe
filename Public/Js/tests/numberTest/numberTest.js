@@ -21,14 +21,14 @@ function tests()
 function continueAction()
 {
 	console.log("in continueAction");
-		$("#target").hide();
+	$("#target").hide();
 
-		curSec();
+	curSec();
 
-		$("#numbers").show();
+	$("#numbers").show();
 		
-		//判断时间timer开启
-		wait(choiceWindowTime)
+	//判断时间timer开启
+	wait(choiceWindowTime)
 				.done(endUp);
 				
 }

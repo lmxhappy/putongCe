@@ -17,7 +17,7 @@
 	
 	//继续
 	$("#continue").click(function(){
-		$("#target").hide();
+		console.log("continue is click");
 		continueAction();
 	});
 	//返回

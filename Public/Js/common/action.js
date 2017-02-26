@@ -16,10 +16,11 @@
 	});
 	
 	//继续
-	$("#continue").click(function(){
+	$("#continueTo").click(function(){
 		console.log("continue is click");
 		continueAction();
 	});
+	
 	//返回
 	$("#back").click(function(){
 		$('#introduce').show();

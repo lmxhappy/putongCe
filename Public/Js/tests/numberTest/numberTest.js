@@ -1,6 +1,22 @@
+/***2017.2.26*/
+var choiceWindowTime = 3 * 60 * 1000; 
+/****================================*/
+function endUp()
+{
+	console.log("三分钟已经过去了");
+}
 
-	$(function(){
-		$('#numbers').find('td').click(function(){
+/**测试时间倒计时**/
+function tests()
+{
+	//判断时间timer开启
+		wait(choiceWindowTime)
+			.done(endUp);
+}
+	
+$(function(){
+		/**选择数字*/
+	$('#numbers').find('td').click(function(){
 			//alert();
 			var num = $(this).html();
 			//alert(num);
@@ -18,15 +34,8 @@
 				choice.push(numberId);
 			console.log(choice);
 			
-		}); 
-		
-		function endUp()
-		{
-			console.log("三分钟已经过去了");
-		}
-		
-		var choiceWindowTime = 3 * 60 * 1000;
-			//判断时间开启
-		wait(choiceWindowTime)
-			.done(endUp);
-	});
+	}); 
+
+	
+	
+});

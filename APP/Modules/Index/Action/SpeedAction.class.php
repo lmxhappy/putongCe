@@ -17,6 +17,18 @@ class SpeedAction extends Action {
 			$this->display();
 	}
 	
+	/**生成一个target的目标数字*/
+	public function createTargetNum()
+	{
+		$ret = 0;
+		for($i=0;$i<100;$i++)
+		{
+			$ret = ($ret + rand(0,0)) % 10;
+			p($ret);
+		}
+		
+		return $ret;
+	}
 	/**将产生的这些随机的数字存入到数据库表tb_numbertest中，作为一列numbers存入**/
 	private function storeMatrix($numbers)
 	{

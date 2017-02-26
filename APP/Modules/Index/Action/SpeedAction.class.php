@@ -23,7 +23,7 @@ class SpeedAction extends Action {
 		$ret = 0;
 		for($i=0;$i<100;$i++)
 		{
-			$ret = ($ret + rand(0,0)) % 10;
+			$ret = ($ret + rand(0,10)) % 10;
 			p($ret);
 		}
 		

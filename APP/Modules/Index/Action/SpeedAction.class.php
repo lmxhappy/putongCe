@@ -23,7 +23,9 @@ class SpeedAction extends Action {
 		$ret = $this->storeMatrix($this->numbers);
 		
 		$this->targetNum = $this->createTargetNum();
+		p($this->targetNum);
 		$id = $ret;
+		p($id);
 		if(!$this->storeTargetNum($id, $this->targetNum));
 		{
 			p("no target");

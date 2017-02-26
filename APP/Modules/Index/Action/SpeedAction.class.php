@@ -17,7 +17,7 @@ class SpeedAction extends Action {
 	}
 	
 	/***/
-	private createData()
+	private function createData()
 	{
 		$this->numbers = $this->createMatrix();
 		$ret = $this->storeMatrix($this->numbers);
@@ -48,7 +48,7 @@ class SpeedAction extends Action {
 		for($i=0;$i<100;$i++)
 		{
 			$ret = ($ret + rand(0,10)) % 10;
-			p($ret);
+			//p($ret);
 		}
 		
 		return $ret;

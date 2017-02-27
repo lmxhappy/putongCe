@@ -37,6 +37,8 @@ class SpeedAction extends Action {
 	public function beginTest()
 	{
 		$this->numbers = $this->createMatrix();
+		//p($this->numbers);die;
+
 		$ret = $this->storeMatrix($this->numbers);
 		
 		if($ret == -1)

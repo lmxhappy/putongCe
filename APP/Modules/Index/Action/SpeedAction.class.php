@@ -42,7 +42,7 @@ class SpeedAction extends Action {
 		if($ret == -1)
 			$this->error("产生数字错误，请联系管理员！");
 		else
-			$this->display();
+			$this->display("showNumbers");
 	}
 	/***/
 	private function createData()

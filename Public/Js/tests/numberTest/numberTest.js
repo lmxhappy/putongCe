@@ -25,7 +25,7 @@ function continueAction()
 
 	curSec();
 
-	$("#numbers").show();
+//	$("#numbers").show();
 		
 	//判断时间timer开启
 	wait(choiceWindowTime)
@@ -55,6 +55,10 @@ $(function(){
 			
 	}); 
 
-	
+	curSec();
+		
+	//判断时间timer开启
+	wait(choiceWindowTime)
+				.done(endUp);
 	
 });

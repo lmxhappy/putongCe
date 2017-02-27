@@ -36,7 +36,8 @@ class SpeedAction extends Action {
 	/***正式开始实验*/
 	public function beginTest()
 	{
-		$ret = $this->createData();
+		$this->numbers = $this->createMatrix();
+		$ret = $this->storeMatrix($this->numbers);
 		
 		if($ret == -1)
 			$this->error("产生数字错误，请联系管理员！");

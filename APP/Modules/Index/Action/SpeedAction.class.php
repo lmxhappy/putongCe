@@ -29,7 +29,7 @@ class SpeedAction extends Action {
 		{
 			//p("target");
 		}
-		p($this->targetNum);die;
+		//p($this->targetNum);die;
 		$this->display("introduce");
 	}
 	

@@ -8,6 +8,19 @@
 class SpeedAction extends Action {
 	public function index()
 	{
+		$this->display();
+	}
+	
+	
+	/***介绍相关的信息*/
+	public function introduce()
+	{
+		
+	}
+	
+	/***正式开始实验*/
+	public function beginTest()
+	{
 		$ret = $this->createData();
 		
 		if($ret == -1)
@@ -15,7 +28,6 @@ class SpeedAction extends Action {
 		else
 			$this->display();
 	}
-	
 	/***/
 	private function createData()
 	{

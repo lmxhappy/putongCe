@@ -15,7 +15,22 @@ class SpeedAction extends Action {
 	/***介绍相关的信息*/
 	public function introduce()
 	{
+		$this->targetNum = $this->createTargetNum();
+		//p($this->targetNum);
+		$id = $ret;
+		//p($id);
 		
+		$result = $this->storeTargetNum($id, $this->targetNum);
+		//p("$result"+$result);
+		if(!result)
+		{
+			p("no target");
+		}else
+		{
+			//p("target");
+		}
+		p($this->targetNum);die;
+		$this->display("introduce");
 	}
 	
 	/***正式开始实验*/

@@ -5,7 +5,7 @@ function endUp()
 {
 	console.log("三分钟已经过去了");
 	$("#numbers").hide();
-	$("#end").show();
+//	$("#end").show();
 	
 	curSec();
 }

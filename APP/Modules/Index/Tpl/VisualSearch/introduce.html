@@ -1,0 +1,25 @@
+<include file="speed-header" />
+</head>
+<body>
+	<div id="page"> 
+		<div id="content">
+			
+			
+			<div id="target" class="container" style="display:block">
+				<div>
+					<p>
+						接下来您会看到多行数字，请您从左到右、从上到下依次点击数字<span id="targetNum">{$targetNum}</span>，其它数字不要点击。点中的数字会被划掉。
+					</p>
+					
+					<a href="{:U(GROUP_NAME.'/Index/Speed/beginTest')}" class="button button-royal button-pill button-giant" id="continueTo">正式开始测验</a>
+				
+				</div>
+			</div>
+		</div>
+	</div>
+</body>
+</html>
+
+<script type="text/javascript" src="__PUBLIC__/Js/common/wait.js"></script>
+<script type="text/javascript" src="__PUBLIC__/Js/common/myTime.js"></script>
+<script type="text/javascript" src="__PUBLIC__/Js/tests/numberTest/numberTest.js"></script>

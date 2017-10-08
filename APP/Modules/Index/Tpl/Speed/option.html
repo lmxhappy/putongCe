@@ -1,0 +1,42 @@
+<include file="speed-header" />
+</head>
+<body>
+	<div id="page"> 
+		<div id="content">
+			<div id="beforeTest">
+				   <div id="option" class="col-lg-8 col-lg-offset-2" style="margin-bottom:50px;display:block;text-align:center; cursor:default;font-family:Times New Roman;">
+                                                <div style="font-size:22px;font-family: Times New Roman;width:100%;border-collapse:separate; border-spacing:10px;">
+							本次划消的数字为<span>{$targetNum}</span>
+                                                </div>
+                                        </div>	
+				<div id="begin" style="display:block;margin-top:30px;top:30px;">
+					<!--<a href="javascript:void(0)" id="start">start</a> 2017.7.2-->
+					<a id="beginhref" href="/Index/Speed/beginTest/targetNum/{$targetNum}" class="button button-royal button-pill button-giant" >开始测验</a>
+					<a href="javascript:void(0)" class="button button-royal button-pill button-giant" id="back">返回</a>
+					
+				</div>
+			</div>
+
+
+		</div>
+	</div>
+</body>
+</html>
+
+<script type="text/javascript" src="__PUBLIC__/Js/common/wait.js"></script>
+<script type="text/javascript" src="__PUBLIC__/Js/common/myTime.js"></script>
+<script type="text/javascript" src="__PUBLIC__/Js/tests/numberTest/numberTest.js"></script>
+<script>
+$(function(){
+	if(location.href.indexOf("times") > 0)
+          {
+                  //$("#begin").children("a").attr("href", "Index/Speed/option");
+		
+                  var url = $("#option-begin").attr("href");
+                  $("#option-begin").attr("href", url+"/times");
+		console.log("times");
+          }
+});
+</script>
+<script type="text/javaScript" src="__PUBLIC__/Js/tests/numberTest/urlChange.js"> </script>
+

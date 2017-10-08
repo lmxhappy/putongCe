@@ -1,19 +1,19 @@
 <include file="speed-header" />
 </head>
 <body>
-	<div id="page"> 
+	<div id="page" style="height:90%;'"> 
 		<div id="content">
 			<div class="container" >
 				<div class="row" id="inTest">
 					<div id="numbers" class="col-lg-8 col-lg-offset-2" style="display:block;text-align:center; cursor:default;font-family:Times New Roman;">
-						<table style="font-size:12px;font-family: Times New Roman;width:76%;">
+						<table style="font-size:22px;font-family: Times New Roman;width:100%;border-collapse:separate; border-spacing:10px;">
 							<tbody>
 									<foreach name="numbers" item="v" key="k">
-										<if condition="$k%35 eq 0 ">
+										<if condition="$k%10 eq 0 ">
 											<tr>
 										</if>
 											<td numberId="{$k}">{$v}</td>
-										<if condition="($k+1)%35 eq 0 ">
+										<if condition="($k+1)%10 eq 0 ">
 											</tr>
 										</if>
 									</foreach>
@@ -25,11 +25,21 @@
 			</div>
 			
 		</div>
+		
 	</div>
+
+
+	<div id="begin" style="position:relative;display:none;top:5px;bottom:30px;width:100%;right:20px;">
+                                      <a href="/Index/Speed/beginTest" class="button button-royal button-pill button-giant" >下一测验</a>
+        </div>
+	
+
+	<div id="id">{$id}</div>
 </body>
 </html>
 
 
 <script type="text/javascript" src="__PUBLIC__/Js/common/wait.js"></script>
 <script type="text/javascript" src="__PUBLIC__/Js/common/myTime.js"></script>
+<script type="text/javascript" src="__PUBLIC__/Js/tests/numberTest/audio.js"></script>
 <script type="text/javascript" src="__PUBLIC__/Js/tests/numberTest/numberTest.js"></script>

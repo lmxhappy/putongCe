@@ -8,6 +8,10 @@
 class SpeedAction extends Action {
 	public function index()
 	{
+		$user = I('user');
+		$desc = I('desc');
+		//p($user);p($desc);die;
+		
 		$this->display();
 	}
 	
@@ -15,9 +19,14 @@ class SpeedAction extends Action {
 	/***介绍相关的信息*/
 	public function introduce()
 	{
+		//p($this->targetNum);die;
+		$this->display("introduce");
+	}
+	public function option(){
 		$this->targetNum = $this->createTargetNum();
+		//p($this->targetNum);die;
 		//p($this->targetNum);
-		$id = $ret;
+		//$id = $ret;
 		//p($id);
 		
 		$result = $this->storeTargetNum($id, $this->targetNum);
@@ -29,26 +38,47 @@ class SpeedAction extends Action {
 		{
 			//p("target");
 		}
-		//p($this->targetNum);die;
-		$this->display("introduce");
+		$this->display("option");
+	}
+	public function testResult(){
+		$id = I('id');
+		$choice = I('choice');
+		p($id);
+		p($choice);
+		$data['choice'] = $choice;
+		$where = array("id"=>$id);
+		$ret = M('numbertest')->where($where)->save($data);	
+		echo json_encode($ret);
 	}
 	
 	/***正式开始实验*/
 	public function beginTest()
 	{
-		$this->numbers = $this->createMatrix();
+		$targetNum = I('targetNum');
+		$desc = I('desc');
+		if(!$targetNum){
+                        $this->display("introduce");
+			return;
+		}
 
-		$ret = $this->storeMatrix($this->numbers);
-		
+		//$this->numbers = $this->createMatrix();
+		$this->numbers = $this->createNum(10);
+		//p($this->numbers);die;
+
+		$ret = $this->storeMatrix($targetNum, $this->numbers, $desc);
+		$this->id = $ret;
+
 		if($ret == -1)
 			$this->error("产生数字错误，请联系管理员！");
 		else
 			$this->display("showNumbers");
 	}
+
 	/***/
 	private function createData()
 	{
 		$this->numbers = $this->createMatrix();
+
 		$ret = $this->storeMatrix($this->numbers);
 		
 		$this->targetNum = $this->createTargetNum();
@@ -92,11 +122,11 @@ class SpeedAction extends Action {
 		return $ret;
 	}
 	/**将产生的这些随机的数字存入到数据库表tb_numbertest中，作为一列numbers存入**/
-	private function storeMatrix($numbers)
+	private function storeMatrix($target, $numbers, $desc)
 	{
 		$jsonStr = json_encode($numbers);
 		//p($jsonStr);
-		$data = Array("numbers"=>$jsonStr);
+		$data = Array("numbers"=>$jsonStr, "target"=>$target, "desc"=>$desc);
 		$ret = M('numbertest')->add($data);
 		//p(M('numbertest')->getLastSql());
 		//p($ret);die;
@@ -117,6 +147,8 @@ class SpeedAction extends Action {
 		return $numbers;
 	}
 	
+
+	//产生10*$num个随机数字
 	public function createNum($num)
 	{
 		/*
@@ -127,6 +159,7 @@ class SpeedAction extends Action {
 			return null;
 		
 		$arr = array();
+		//$i代表十个数字，每个数字放入$num次
 		for($i=0;$i<10;$i++)
 		{
 			for($j=0;$j<$num;$j++)
@@ -138,7 +171,8 @@ class SpeedAction extends Action {
 		p($arr);
 		p("0000000000000");
 		*/
-		
+	
+		//将这些数字随机打乱100次	
 		for($i=0;$i<100;$i++)
 		{
 			usort($arr, array($this,"randomsort"));
